@@ -1,0 +1,33 @@
+.pdiv1{
+    border: black 1px solid;
+    width: 100%;
+    height: 200px;
+    font-family: neue machina;
+}
+.ph1{
+    font-weight: bold;
+    font-size: 80px;
+    text-align: center;
+    margin-top: 30px;
+}
+.ph4{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+}
+.content{
+    width: 1020px;
+    margin-left: 260px;
+    font-family: neue machina;
+    height: auto;
+}
+.cnt{
+    margin-top: 50px;   
+}
+.ph2{
+    margin-top: 50px;
+    font-weight: bold;
+}
+.pp{
+    margin-top: 20px;
+}

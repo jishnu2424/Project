@@ -1,0 +1,43 @@
+.ddpage{
+    width: 100%;
+    height: 1200px;
+}
+.ddh1{
+    font-family: neue machina;
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.ddimg{
+    margin-left: 355px;
+    margin-top: 50px;
+}
+.ddh11{
+    margin-left: 355px;
+    margin-top: 20px;
+    font-family: neue machina;
+    font-size: 50px;
+    font-weight: bold;
+}
+.ddp{
+    margin-left: 355px;
+    margin-top: 20px;
+    font-family: neue machina;
+    font-size: 30px;
+    width: 800px;
+}
+.ddbtn{
+    width: 203px;
+    height: 64px;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    margin-left: 355px;
+}
+.ddbtn:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}

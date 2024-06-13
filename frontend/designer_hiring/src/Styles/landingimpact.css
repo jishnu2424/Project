@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    margin-top: 50px;
+}
+
+.li1 {
+    font-family: neue machina;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    gap: 20px; /* Adjust as needed */
+    justify-content: flex-end; /* Aligns items to the right */
+}
+
+.icon {
+    font-size: 24px; /* Adjust icon size */
+    border-radius: 50px;
+}

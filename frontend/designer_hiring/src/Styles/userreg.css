@@ -1,0 +1,37 @@
+.uh1{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    color: white;
+    font-family: neue machina;
+}
+.userreg{
+    position: absolute;
+    left: 110px;
+    top: 300px;
+    color: white;
+    font-family: neue machina;
+    display: grid;
+
+}
+.uinp{
+    width: 453px;
+    height: 64px;
+    border-radius: 5px;
+
+}
+.ul1{
+    font-size: 25px;
+}
+.ub1{
+    width:453px ;
+    height:64px ;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+.ub1:hover{
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+}

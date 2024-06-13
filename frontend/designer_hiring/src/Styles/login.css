@@ -1,0 +1,62 @@
+.llh1{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    color: white;
+    font-family: neue machina;
+}
+.loginform{
+    position: absolute;
+    left: 110px;
+    top: 300px;
+    color: white;
+    font-family: neue machina;
+    display: grid;
+}
+.logininput{
+    width: 453px;
+    height: 64px;
+    border-radius: 5px;
+}
+.ll1{
+    font-size: 25px;
+}
+.loginbtn{
+    width: 453px;
+    height: 64px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+.loginbtn:hover{
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+}
+.reg-user{
+    width: 210px;
+    height: 64px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+.reg-des{
+    width: 210px;
+    height: 64px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 404px;
+    left: 240px;
+}
+.reg-user:hover{
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+}
+.reg-des:hover{
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+}

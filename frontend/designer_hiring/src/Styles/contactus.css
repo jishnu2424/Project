@@ -1,0 +1,79 @@
+.talktous{
+    height: 500px;
+    background-color: white;
+    font-family: neue machina;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contact-container {
+    display: flex;
+    color: white;
+    background-color: black;
+    height: 100vh;
+    padding: 20px;
+    font-family: neue machina;
+  }
+  
+  .contact-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .contact-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-details {
+    font-size: 18px;
+  }
+  
+  .contact-item {
+    margin-bottom: 10px;
+  }
+  
+  .contact-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-right iframe {
+    border: 0;
+  }
+  
+ 
+
+  
+

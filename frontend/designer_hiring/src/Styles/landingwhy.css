@@ -1,0 +1,40 @@
+.lwhy {
+    background-color: #1A1A1A;
+    color: white;
+    margin: 0 auto;
+    border: none;
+    font-family: 'neue machina', sans-serif;
+  }
+  
+  .lwhy .accordion-header {
+    background-color: #1A1A1A;
+    color: white;
+    border: none;
+    font-size: 80px;
+    font-weight: bold; /* Ensure the header text is bold */
+  }
+  
+  .lwhy .accordion-body {
+    background-color: #1A1A1A;
+    color: white;
+    border: none;
+  }
+  
+  .lwhy .accordion-button {
+    background-color: #1A1A1A;
+    color: white;
+    border: none;
+    font-weight: bold; /* Ensure the button text is bold */
+  }
+  
+  .lwhy .accordion-button:not(.collapsed) {
+    background-color: #1A1A1A;
+    color: white;
+    border: none;
+  }
+  
+  .lwhy .accordion-button::after {
+    filter: invert(1);
+    border: none;
+  }
+  

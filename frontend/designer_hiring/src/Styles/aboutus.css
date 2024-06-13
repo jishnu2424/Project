@@ -1,0 +1,172 @@
+.abt{
+    background-image: url('../Assets/aboutus.png');
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+.ah1{
+    font-family: neue machina;
+    font-size: 80px;
+    font-weight: bold;
+    color: black; 
+    margin-left: 50px;  
+}
+.ap{
+    font-family: neue machina;
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 30px;
+
+}
+.acnt{
+    background-color: white;
+    width: 100%;
+    height: 700px;
+}
+.mission{
+    width: 772px;
+    height: 164px;
+    background-color: #1E1E1E;
+    color: white;
+    font-family: neue machina;
+    margin-top: 70px;
+    margin-left: 70px
+
+}
+.amh3{
+    font-weight: bold;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.amp{
+    font-size: 32px;
+    margin-left: 10px;
+
+}
+.line1{
+    height: 3px;
+    width: 250px;
+    background-color: black;
+    position: absolute;
+    left: 840px;
+    top: 550px;
+}
+.line2{
+    width: 3px;
+    height: 125px;
+    background-color: black;
+    position: absolute;
+    left: 1087px;
+    top: 550px;
+}
+.vision{
+    width: 772px;
+    height: 164px;
+    background-color: #1E1E1E;
+    color: white;
+    font-family: neue machina;
+    margin-top: 40px;
+    margin-left: 690px
+}
+.line3{
+    width: 3px;
+    height: 125px;
+    background-color: black;
+    position: absolute;
+    left: 1087px;
+    top: 837px;
+}
+.line4{
+    height: 3px;
+    width: 250px;
+    background-color: black;
+    position: absolute;
+    left: 840px;
+    top: 960px;
+}
+.Proposition
+{
+    width: 772px;
+    height: 164px;
+    background-color: #1E1E1E;
+    color: white;
+    font-family: neue machina;
+    margin-top: 40px;
+    margin-left: 70px
+}
+
+.sucss1{
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    font-family: neue machina;
+}
+.asb{
+    width: 833px;
+    height: 380px;
+    border: 2px solid black;
+    position: absolute;
+    top: 1260px;
+    left: 100px;
+    background-color: white;
+    z-index: 500;
+
+}
+.ash2{
+    margin-left: 50px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 50px;
+}
+.asp{
+    margin-left: 50px;
+    font-weight: bold;
+    font-size:25px;
+}
+.asp1{
+    margin-left: 50px;
+    font-size: 25px;
+}
+.ourservice{
+    background-color: black;
+    color: white;
+    font-family: neue machina;
+    width: 100%;
+    height: 300px;
+}
+.getint{
+    font-family: neue machina;
+    width: 1200px;
+    margin-right: 50px;
+    height: 800px;
+}
+.gh1{
+    position: absolute;
+    top: 2300px;
+    left: 600px;
+    font-weight: bold;
+    font-size: 64px;
+}
+.gp{
+    position: absolute;
+    left: 600px;
+    top: 2400px;
+    font-size: 32px;
+}
+.gb{
+    position: relative;
+    top: 250px;
+    left: 50px;
+    width: 300px;
+    height: 64px;
+    color: white;
+    background-color: black;
+}
+.gb:hover{
+    background-color: white;
+    color: black;
+    border: 1pzx solid black;
+}

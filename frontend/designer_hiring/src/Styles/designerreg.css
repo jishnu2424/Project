@@ -1,0 +1,37 @@
+.dh1{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    color: white;
+    font-family: neue machina;
+}
+.dserreg{
+    position: absolute;
+    left: 110px;
+    top: 300px;
+    color: white;
+    font-family: neue machina;
+    display: grid;
+
+}
+.dinp{
+    width: 453px;
+    height: 64px;
+    border-radius: 5px;
+
+}
+.dl1{
+    font-size: 25px;
+}
+.db1{
+    width:453px ;
+    height:64px ;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+.db1:hover{
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+}

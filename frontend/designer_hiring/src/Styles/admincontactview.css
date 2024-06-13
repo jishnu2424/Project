@@ -1,0 +1,23 @@
+.admmh1{
+    font-size: 80px;
+    font-weight: bold;
+    font-family: neue machina;
+    text-align: center;
+}
+.admmdiv1{
+    font-family: neue machina;
+    width: 100%;
+    height: auto;
+}
+.admconview{
+    height: 250px;
+    width: 1400px;
+    border: 2px black solid;
+    margin-top: 50px;
+    margin-left: 55px;
+    margin-bottom: 20px;
+}
+.admch2{
+    margin-top: 20px;
+    margin-left: 50px;
+}

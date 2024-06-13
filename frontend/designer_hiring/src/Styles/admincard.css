@@ -1,0 +1,54 @@
+.acad1{
+    width: 1350px;
+    height: 136px;
+    background-color: white;
+    margin-left: 100px;
+    margin-top: 50px;
+    border: 2px black solid;
+    margin-bottom: 20px;
+    display: flex;
+}
+.admh1{
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+}
+.admpic{
+    margin-top: 17px;
+    margin-left: 20px;
+}
+.admh3{
+    margin-top: 50px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.admview{
+    width:220px ;
+    height:60px ;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    margin-top:40px ;
+    margin-left:500px ;
+    font-weight: bold;
+}
+.admdlt{
+    width:220px ;
+    height:60px ;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    margin-top:40px ;
+    margin-left:30px ;
+    font-weight: bold;
+}
+.admview:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}
+.admdlt:hover{
+    background-color: red;
+    color: white;
+    border: black solid 2px;
+}
