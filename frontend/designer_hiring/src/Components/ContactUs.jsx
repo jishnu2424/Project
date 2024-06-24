@@ -1,43 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Styles/contactus.css'
 import { Button, Col, Form, Row } from 'react-bootstrap'
+import axios from 'axios';
 
 function ContactUs() {
+ 
+ 
+  const [Contact, setContact] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+    if(Contact.name == ''||Contact.email == ''||Contact.phone == ""||Contact.message == ""){
+      alert("complete the form");
+      console.log(Contact);
+      return;
+    }
+    setContact({
+      name:"",
+      email:"",
+      phone:"",
+      message:""
+    });
+    try{
+      const response = await axios.post("http://localhost:5000/contact/add",Contact)
+      console.log(response);
+    }catch(err){
+      console.log(err);
+    }
+
+
+  }
   return (
     <>
 
     <div className='talktous'>
         <h1 style={{fontWeight:"bold",textAlign:"center" ,marginTop:"50px"}}>Talk To Us...</h1>
         <div style={{width:"1400px" ,marginLeft:"70px",marginTop:"50px"}}> 
-        <Form action="">
+        <Form action="" onSubmit={handleSubmit}>
         <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Name" />
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter Name" value={Contact.name} onChange={(e)=>{setContact({...Contact,name:e.target.value})}}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter LastName" />
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control type="number" placeholder="Enter Number" value={Contact.phone} onChange={(e)=>{setContact({...Contact,phone:e.target.value})}} />
         </Form.Group>
       </Row>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control type="number" placeholder="Phone Number" />
+          <Form.Control type="email" placeholder="Enter email" value={Contact.email} onChange={(e)=>{setContact({...Contact,email:e.target.value})}} />
         </Form.Group>
       </Row>
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" wu />
+        <Form.Label>Message</Form.Label>
+        <Form.Control as="textarea" placeholder='Type Something' rows={3} value={Contact.message} onChange={(e)=>{setContact({...Contact,message:e.target.value})}}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="conbtn" type="submit">
         Submit
       </Button>
         </Form>

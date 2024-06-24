@@ -1,29 +1,72 @@
-import React from 'react'
-import { Card, Col, Container, Row } from 'react-bootstrap'
-import '../Styles/lcard.css'
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Container, Row, Spinner, Alert } from 'react-bootstrap';
+import '../Styles/lcard.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function CardsLanding() {
+  const [viewDesign, setViewDesign] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/design/view");
+      setViewDesign(response.data);
+    } catch (error) {
+      setError("Error fetching data");
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Spinner animation="border" variant="primary" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Alert variant="danger">{error}</Alert>
+      </div>
+    );
+  }
+
   return (
-    <>
-    <div>CardsLanding</div>
     <Container fluid="md">
-        <Row>
-            <Col md={6} lg={4} className="mb-4" >
-    <Card style={{ width: '18rem' }} className='Lcard'>
-      <Card.Img variant="top" src="https://i.pinimg.com/564x/31/f0/c7/31f0c7cf0e4984e6aa6484149b748840.jpg" width={"295"}height={'380'} />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-      </Card.Body>
-    </Card>
-    </Col>
-    </Row>
+      <Row>
+        {viewDesign.map((item, index) => (
+          <Col key={index} md={6} lg={4} className="mb-4">
+            <Link to={`/desdetail/${item._id}`}>
+              <Card className='Lcard'>
+                <Card.Img 
+                  variant="top" 
+                  src="https://i.pinimg.com/564x/31/f0/c7/31f0c7cf0e4984e6aa6484149b748840.jpg" 
+                  className="card-img-top" 
+                />
+                <Card.Body className="card-body-hover">
+                  <Card.Title>{item.designName}</Card.Title>
+                  <Card.Text>
+                    Design Type: {item.designType} <br />
+                    Design Description: {item.designDescription}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </Container>
-    </>
-  )
+  );
 }
 
-export default CardsLanding
+export default CardsLanding;

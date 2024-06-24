@@ -1,0 +1,101 @@
+.ddform{
+    width: 1250px;
+    margin-left: 120px;
+    font-family: neue machina;
+
+}
+.ddf1{
+    width: 476px;
+    height: 60px;
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+}
+.ddf2{
+    width: 476px;
+    height: 60px;
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+}
+.ddff1{
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+
+}
+.mb-3{
+    margin-top: 50px;
+}
+.dserimg{
+    margin-left: 50px;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+.ddb1{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.ddb1:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}
+.ddfa{
+    width: 1115px;
+    margin-left: 50px;
+}
+.ddch{
+    display: flex;
+    margin-left: 50px;
+}
+.ddch1{
+    margin-left: 10px;
+    flex: 1 ;
+}
+.dlogout{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-left: 550px;
+}
+.dlogout:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}
+.ddelete{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 256px;
+    left: 1150px;
+}
+.ddelete:hover{
+    background-color: red;
+    color: white;
+    border: 2px black solid; 
+}

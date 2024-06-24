@@ -1,0 +1,76 @@
+.category {
+    width: 100%;
+    height: auto;
+    font-family: neue machina;
+    background-color: black;
+    color: white;
+}
+
+.cath1 {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.catb {
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    margin-left: 10px;
+    width: 150px;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 14px;
+}
+
+.catb:hover {
+    background-color: white;
+    color: black;
+    border: 2px black solid;
+    font-weight: bold;
+}
+
+.catcard {
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.catcard:hover {
+    border: 3px solid black;
+}
+
+.catcad {
+    background-color: white;
+    width: 1450px;
+    margin-left: 35px;
+    border-radius: 5px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catcard:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    font-family: neue machina;
+}

@@ -3,6 +3,21 @@
     background-color: white;
     font-family: neue machina;
 }
+.conbtn{
+  background-color: white;
+  border: black 2px solid;
+  color: black;
+  width: 250px;
+  height: 82px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.conbtn:hover{
+  background-color: black;
+  border: none;
+  color: white;
+}
 
 
 
@@ -38,6 +53,7 @@
     height: 100vh;
     padding: 20px;
     font-family: neue machina;
+    margin-top: 100px;
   }
   
   .contact-left {

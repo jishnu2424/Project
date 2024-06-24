@@ -5,6 +5,7 @@ import LandingWhy from '../Components/LandingWhy'
 import LandingTestimonial from '../Components/LandingTestimonial'
 import LandingImpact from '../Components/LandingImpact'
 import LandingDesigner from '../Components/LandingDesigner'
+import LandingCategory from '../Components/LandingCategory'
 
 function LandingPage() {
   return (
@@ -14,7 +15,8 @@ function LandingPage() {
     <LandingWhy/>
     <LandingImpact/>
     <LandingDesigner/>
-    <LandingTestimonial/>   
+    <LandingTestimonial/>
+    <LandingCategory/>   
     </>
   )
 }

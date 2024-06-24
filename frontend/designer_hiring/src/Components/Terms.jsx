@@ -7,7 +7,7 @@ function Terms() {
       <div className="tdiv1">
         <h1 className="th1">Terms And Services</h1>
         <h4 className="th4">Effective Date: October 15, 2023</h4>
-        <h4 className="th4">Last Updated Date: October 19, 2023</h4>
+        <h4 className="th4">Last Updated Date: January 19, 2024</h4>
       </div>
       <div className="content">
         <p className="tcnt">

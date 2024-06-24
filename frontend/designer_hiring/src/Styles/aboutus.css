@@ -160,13 +160,15 @@
     position: relative;
     top: 250px;
     left: 50px;
-    width: 300px;
-    height: 64px;
-    color: white;
-    background-color: black;
+    width: 250px;
+    height: 82px;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
 }
 .gb:hover{
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border: 1pzx solid black;
 }

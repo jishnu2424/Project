@@ -14,11 +14,11 @@ function AdminPage() {
       justify
       style={{fontWeight:"bold"}}
       >
-        <Tab eventKey="home" title="Designers">
-          <AdminCard/>
-        </Tab>
-        <Tab eventKey="profile" title="Users">
+        <Tab eventKey="home" title="Users">
           <AdminUserCard/>
+        </Tab>
+        <Tab eventKey="profile" title="Designers">
+        <AdminCard/>
         </Tab>
         <Tab eventKey="longer-tab" title="Contact View">
           <AdminContactView/>

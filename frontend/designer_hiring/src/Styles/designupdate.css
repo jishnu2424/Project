@@ -1,0 +1,68 @@
+.ddaform{
+    width: 1250px;
+    margin-left: 120px;
+    font-family: neue machina;
+
+}
+.ddaff1{
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+.ddaf2{
+    width: 476px;
+    height: 60px;
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+}
+.dddaff1{
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+
+}
+.ddadf2{
+    width: 1110px;
+    height: 60px;
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+}
+.ddab1{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.ddab1:hover{
+    background-color: red;
+    color: white;
+    border: none;
+}
+.dddab{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 100px;
+    margin-left: 50px;
+}
+.dddab:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}

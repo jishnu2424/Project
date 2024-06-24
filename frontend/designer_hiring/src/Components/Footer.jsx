@@ -28,7 +28,7 @@ function Footer() {
       </div>
     </div>
     <div className='footb'>
-    <button className='bcktop'>Back To Top</button>
+    <Link to={'/'}><button className='bcktop'>Back To Home</button></Link>
     <Link to={'/privacy'}><h2 className='h2'>Privacy policy</h2></Link>
     <Link to={'/terms'}><h2 className='h2'>Terms & Conditions</h2></Link>
 {/* useref */}
