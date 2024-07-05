@@ -5,7 +5,7 @@ import '../Styles/landingwhy.css'
 function LandingWhy() {
   return (
     <>
-    <div style={{backgroundColor:"#1A1A1A",height:"350px"}}>
+    <div style={{backgroundColor:"#1A1A1A",height:"750px"}}>
     <Accordion defaultActiveKey="0" className='lwhy'style={{border:"none"}}>
     <Accordion.Item eventKey="0" className='lwhy' style={{marginLeft:"100px",marginRight:"100px"}} >
       <Accordion.Header className='lwhy'>Why social media and why us?</Accordion.Header>

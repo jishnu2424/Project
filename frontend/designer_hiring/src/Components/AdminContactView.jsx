@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/admincontactview.css';
-import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import ApiRequest from '../Lib/ApiRequest';
 
 function AdminContactView() {
   const [view, setView] = useState([]);
@@ -12,7 +12,7 @@ function AdminContactView() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/contact/view");
+      const response = await ApiRequest.get("contact/view");
       setView(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

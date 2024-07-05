@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Styles/desinerdesigndetail.css';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import ApiRequest from '../Lib/ApiRequest';
+import {toast} from 'react-toastify'
 
 function DesignerDesignMain() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function DesignerDesignMain() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/design/view");
+        const response = await ApiRequest.get("design/view");
         const designData = response.data.find((item) => item._id.toString() === id);
         setViewDesign(designData ? [designData] : []);
       } catch (error) {
@@ -26,12 +27,19 @@ function DesignerDesignMain() {
 
   const deleteDesign = async () => {
     try {
-      await axios.delete(`http://localhost:5000/design/delete/${id}`);
-      navigate('/designerhome');
+        const response = await ApiRequest.delete(`design/delete/${id}`);
+        console.log(response);
+        setViewDesign((prevDesign) => ({
+            ...prevDesign,
+            photo: prevDesign.photo.filter((photoUrl) => photoUrl !== id)
+        }));
+        toast.success('Deleted')
+        navigate('/designerhome');
     } catch (err) {
-      console.log(err);
+        console.log(err);
     }
-  }
+}
+
 
   return (
     <div className="dddpage">
@@ -39,20 +47,22 @@ function DesignerDesignMain() {
       {viewDesign.map((item, index) => (
         <div key={index} className="design-detail">
           <img
-            src="https://i.pinimg.com/564x/31/f0/c7/31f0c7cf0e4984e6aa6484149b748840.jpg"
+            src={item.design}
             alt={item.designName}
             width={"800px"}
             height={"500px"}
             className="dddimg"
           />
-          <h1 className="dddh11">{item.designName}</h1>
+          <h2 className="ddh11">Design Name :{item.designName}</h2>
+          <h2 className="dddh11">Design Type: {item.designType} </h2>
+          <h2 className="dddh11">Designer: {item.designerName} </h2>
           <p className="dddp">
-            {item.designDescription}
+            About Design: {item.designDescription}
           </p>
           <Link to={`/designerhome/designdetail/update/${item._id}`}>
             <Button className="dddbtn">Update</Button>
           </Link>
-          <Button className="dbdbtn" onClick={deleteDesign}>Delete</Button>
+          <Button className="dbdbtn" onClick={()=>{deleteDesign(item._id)}}>Delete</Button>
         </div>
       ))}
     </div>

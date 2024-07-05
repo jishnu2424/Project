@@ -6,6 +6,7 @@ import LandingTestimonial from '../Components/LandingTestimonial'
 import LandingImpact from '../Components/LandingImpact'
 import LandingDesigner from '../Components/LandingDesigner'
 import LandingCategory from '../Components/LandingCategory'
+import LandingTop from '../Components/LandingTop'
 
 function LandingPage() {
   return (
@@ -17,6 +18,7 @@ function LandingPage() {
     <LandingDesigner/>
     <LandingTestimonial/>
     <LandingCategory/>   
+    <LandingTop/>
     </>
   )
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
@@ -21,8 +23,9 @@ import DesignerHomePage from '../Pages/DesignerHomePage'
 import DesignerDesignMain from '../Components/DesignerDesignMain'
 import DesignAdd from '../Components/DesignAdd'
 import UpdateDesign from '../Components/UpdateDesign'
-import AdminLogin from '../Components/AdminLogin'
 import { AuthContextProvider } from '../Context/userAuth'
+import { SocketContextProvider } from '../Context/SocketContext'
+import ChatBox from '../Components/Chat/ChatBox'
 
 
 function Router() {
@@ -30,6 +33,7 @@ function Router() {
     <div>
         <BrowserRouter>
         <AuthContextProvider>
+          <SocketContextProvider>
         <ScrollToTop/>
         <Header/>
             <Routes>
@@ -52,9 +56,11 @@ function Router() {
               <Route path='/designerhome/designdetail/:id' element={<DesignerDesignMain/>}/>
               <Route path='/designerhome/designadd' element={<DesignAdd/>}/>
               <Route path='/designerhome/designdetail/update/:id' element={<UpdateDesign/>}/>
-              <Route path='/adminlog' element={<AdminLogin/>}/>
+              <Route path='/chat/:id' element={<ChatBox/>}/>
             </Routes>
         <Footer/>
+        <ToastContainer/>
+        </SocketContextProvider>
         </AuthContextProvider>
         </BrowserRouter>
     </div>

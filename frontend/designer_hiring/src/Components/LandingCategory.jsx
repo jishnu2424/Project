@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row, Pagination } from 'react-bootstrap';
 import '../Styles/landingcategory.css';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import {  useNavigate } from 'react-router-dom';
+import ApiRequest from '../Lib/ApiRequest';
 
 function LandingCategory() {
     const [viewDesign, setViewDesign] = useState([]);
     const [filteredArts, setFilteredArts] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(6);
+    const navigate =useNavigate()
     useEffect(() => {
         fetchData();
     }, []);
@@ -18,7 +20,7 @@ function LandingCategory() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/design/view");
+            const response = await ApiRequest.get("design/viewall");
             setViewDesign(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -32,6 +34,27 @@ function LandingCategory() {
             const filtered = viewDesign.filter(item => item.designType === designType);
             setFilteredArts(filtered);
         }
+        setCurrentPage(1); 
+    };
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredArts.slice(indexOfFirstItem, indexOfLastItem);
+
+    const totalPages = Math.ceil(filteredArts.length / itemsPerPage);
+
+    const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+    const renderPagination = () => {
+        let items = [];
+        for (let number = 1; number <= totalPages; number++) {
+            items.push(
+                <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
+                    {number}
+                </Pagination.Item>
+            );
+        }
+        return <Pagination>{items}</Pagination>;
     };
 
     return (
@@ -52,14 +75,14 @@ function LandingCategory() {
             <div className="catcad">
                 <Container fluid="md">
                     <Row>
-                        {filteredArts.length > 0 ? (
-                            filteredArts.map((item) => (
+                        {currentItems.length > 0 ? (
+                            currentItems.map((item) => (
                                 <Col md={6} lg={4} className="mb-4" key={item._id}>
-                                    <Link to={`/designer/desdetail/${item._id}`}>
-                                        <Card style={{ width: "401px" }} className="catcard">
+                                        <Card style={{ width: "401px" }} className="catcard" onClick={()=>{localStorage.token?navigate(`/designer/desdetail/${item._id}`):navigate('/login')}}
+                                        >
                                             <Card.Img
                                                 variant="top"
-                                                src="https://i.pinimg.com/564x/31/f0/c7/31f0c7cf0e4984e6aa6484149b748840.jpg"
+                                                src={item.design}
                                                 alt={item.designName}
                                                 width={"401"}
                                                 height={"290"}
@@ -67,17 +90,17 @@ function LandingCategory() {
                                             <div className="overlay">
                                                 <div className="text">{item.designType}</div>
                                             </div>
-                                            <h2 style={{ fontFamily: "neue machina" }}>{item.designName}</h2>
+                                            {/* <h2 style={{ fontFamily: "neue machina" }}>{item.designName}</h2> */}
                                         </Card>
-                                    </Link>
                                 </Col>
                             ))
                         ) : (
-                        
-                                <h1 style={{color:"black", fontWeight:"bold"}}>No Arts Available</h1>
-                            
+                            <h1 style={{ color: "black", fontWeight: "bold" }}>No Arts Available</h1>
                         )}
                     </Row>
+                    <div style={{marginLeft:"600px"}}>    
+                         {renderPagination()}
+                    </div>
                 </Container>
             </div>
         </div>

@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/designerlanding.css";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import ApiRequest from "../Lib/ApiRequest";
 
 // Importing images
-import amazone from "../Assets/logo.png";
-import microsoft from "../Assets/logo1.png";
-import google from "../Assets/logo2.png";
-import uber from "../Assets/logo4.png";
-import adobe from "../Assets/logo3.png";
-import discord from "../Assets/logo5.png";
-import fedex from "../Assets/logo6.png";
-import meta from "../Assets/logo7.png";
+
 
 function DesignerLanding() {
   const { id } = useParams();
   const [artist, setArtist] = useState(null);
   const [viewDesign, setViewDesign] = useState([]);
-
+  const navigate =useNavigate()
 
 
   useEffect(() => {
@@ -27,7 +20,7 @@ function DesignerLanding() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/design/view");
+      const response = await ApiRequest.get(`design/viewdes/${id}`);
       setViewDesign(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -39,7 +32,7 @@ function DesignerLanding() {
   useEffect(() => {
     const fetchArtist = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/designer/view");
+        const res = await ApiRequest.get("designer/view");
         const artistData = res.data.find((item) => item._id.toString() === id);
         setArtist(artistData || {});
       } catch (err) {
@@ -54,6 +47,18 @@ function DesignerLanding() {
     return <div>Loading...</div>;
   }
 
+
+
+  const createChat = async (id) =>{
+    try {
+     const res = await ApiRequest.post(`chat/add`,{receiverId:id})
+     navigate(`/chat/${res.data._id}`)
+     console.log(res);
+    } catch (error) {
+     console.log(error);
+    }
+   }
+
   return (
     <>
       <div className="sticky-container" />
@@ -66,7 +71,7 @@ function DesignerLanding() {
                 <Card style={{ width: "401px" }} className="lcarrd">
                   <Card.Img
                     variant="top"
-                    src="https://i.pinimg.com/564x/31/f0/c7/31f0c7cf0e4984e6aa6484149b748840.jpg"
+                    src={item.design}
                     alt={item.designName}
                     width={"401"}
                     height={"290"}
@@ -83,14 +88,14 @@ function DesignerLanding() {
       <div className="profile-card">
         <div className="header">
           <img
-            src="https://i.pinimg.com/736x/41/9c/bb/419cbb0513df24eff5a8243fcdf54c9e.jpg"
+            src={artist.photo}
             alt="Profile"
             className="dpic"
           />
           <div className="header-text">
             <h2 className="dpn">{artist.username}</h2>
           </div>
-          <Button className="dsbtn">Hire now</Button>
+          <Button className="dsbtn" onClick={()=>createChat(artist._id)}>Message now</Button>
         </div>
         
         <div className="experience">
@@ -120,62 +125,6 @@ function DesignerLanding() {
           <h2>Skills And Expertise</h2>
           <div className="skills-list">
           {artist.skills}
-          </div>
-        </div>
-      </div>
-
-      <div className="dtc">
-        <h1
-          style={{
-            fontFamily: "neue machina",
-            textAlign: "center",
-            marginTop: "10px",
-          }}
-        >
-          Top Clients
-        </h1>
-
-        <div className="logo-grid">
-          <div className="logo-item">
-            <img src={amazone} alt="Amazon" />
-          </div>
-          <div className="logo-item">
-            <img src={microsoft} alt="Microsoft" />
-          </div>
-          <div className="logo-item">
-            <img src={google} alt="Google" />
-          </div>
-          <div className="logo-item">
-            <img src={uber} alt="Uber" />
-          </div>
-          <div className="logo-item">
-            <img src={adobe} alt="Adobe" />
-          </div>
-          <div className="logo-item">
-            <img src={discord} alt="Discord" />
-          </div>
-          <div className="logo-item">
-            <img src={fedex} alt="FedEx" />
-          </div>
-          <div className="logo-item">
-            <img src={meta} alt="Meta" />
-          </div>
-        </div>
-
-        <h1 style={{ fontFamily: "neue machina", textAlign: "center" }}>
-          Interactions
-        </h1>
-
-        <div className="dint">
-          <div style={{ display: "flex" }}>
-            <h1 style={{ fontSize: "100px", marginLeft: "150px", marginTop: "70px" }}>51+</h1>
-            <h1 style={{ fontSize: "100px", marginLeft: "250px", marginTop: "70px" }}>65+</h1>
-            <h1 style={{ fontSize: "100px", marginLeft: "250px", marginTop: "70px" }}>70+</h1>
-          </div>
-          <div style={{ display: "flex" }}>
-            <h1 style={{ marginLeft: "80px" }}>Commissions</h1>
-            <h1 style={{ marginLeft: "200px" }}>Submissions</h1>
-            <h1 style={{ marginLeft: "200px" }}>Customers</h1>
           </div>
         </div>
       </div>

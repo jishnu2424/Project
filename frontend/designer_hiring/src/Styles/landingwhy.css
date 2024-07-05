@@ -1,40 +1,65 @@
 .lwhy {
-    background-color: #1A1A1A;
-    color: white;
-    margin: 0 auto;
-    border: none;
-    font-family: 'neue machina', sans-serif;
-  }
-  
+  background-color: #1A1A1A;
+  color: white;
+  margin: 0 auto;
+  border: none;
+  font-family: 'neue machina', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Adjusting the accordion header */
+.lwhy .accordion-header {
+  background-color: #1A1A1A;
+  color: white;
+  border: none;
+  font-size: 5vw; /* Scales with viewport width */
+  font-weight: bold;
+}
+
+/* Adjusting the accordion body */
+.lwhy .accordion-body {
+  background-color: #1A1A1A;
+  color: white;
+  border: none;
+  padding: 20px; /* Add padding for better readability */
+  font-size: 1.2rem; /* Slightly increase font size */
+}
+
+/* Adjusting the accordion button */
+.lwhy .accordion-button {
+  background-color: #1A1A1A;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1.5rem; /* Adjust the button font size */
+}
+
+/* Active state of the accordion button */
+.lwhy .accordion-button:not(.collapsed) {
+  background-color: #1A1A1A;
+  color: white;
+  border: none;
+}
+
+/* Customizing the accordion button icon */
+.lwhy .accordion-button::after {
+  filter: invert(1);
+  border: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
   .lwhy .accordion-header {
-    background-color: #1A1A1A;
-    color: white;
-    border: none;
-    font-size: 80px;
-    font-weight: bold; /* Ensure the header text is bold */
+      font-size: 8vw; /* Increase the font size for smaller screens */
   }
-  
+
   .lwhy .accordion-body {
-    background-color: #1A1A1A;
-    color: white;
-    border: none;
+      font-size: 1rem; /* Adjust the body text size for smaller screens */
+      padding: 10px; /* Reduce padding for smaller screens */
   }
-  
+
   .lwhy .accordion-button {
-    background-color: #1A1A1A;
-    color: white;
-    border: none;
-    font-weight: bold; /* Ensure the button text is bold */
+      font-size: 1.2rem; /* Adjust the button text size for smaller screens */
   }
-  
-  .lwhy .accordion-button:not(.collapsed) {
-    background-color: #1A1A1A;
-    color: white;
-    border: none;
-  }
-  
-  .lwhy .accordion-button::after {
-    filter: invert(1);
-    border: none;
-  }
-  
+}

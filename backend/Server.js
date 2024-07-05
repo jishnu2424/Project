@@ -6,20 +6,24 @@ const designerRoute =require('./Routes/designerRoute')
 const contactRoute=require('./Routes/contactRoute')
 const authRoute =require('./Routes/authRoute');
 const designRoute = require('./Routes/designRoute.js')
-const cookieParser = require('cookie-parser');
+const messageRoutes = require('./Routes/messageRoute.js');
+const chatRoutes = require('./Routes/chatRoute.js');
+const bodyParser = require('body-parser')
 const cors =require('cors')
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use(cookieParser())
+app.use(bodyParser.json({ limit: '200000mb' }));
+app.use(bodyParser.urlencoded({ limit: '100000mb', extended: true }));
 app.use('/user',userRoute)
 app.use('/admin',adminRoute)
 app.use('/designer',designerRoute)
 app.use('/contact',contactRoute)
 app.use('/auth',authRoute)
 app.use('/design',designRoute)
-
+app.use('/chat',chatRoutes)
+app.use('/message',messageRoutes)
 
 app.listen(5000,()=>{
     console.log("server running");

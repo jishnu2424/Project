@@ -18,9 +18,16 @@ const schema = new mongoose.Schema({
         required:true
     },
     design:{
-        type:String,
+        type:[String]
         
-    }
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: true
+    },
+    favorites: 
+    [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 })
 
 const DesignDB =mongoose.model('designs',schema)

@@ -13,18 +13,31 @@
     margin-left: 355px;
     margin-top: 50px;
 }
+.ddh11{
+    margin-left: 355px;
+    margin-top: 20px;
+    font-family: neue machina;
+    font-size: 30px;
+    font-weight: bold;
+}
 .dddh11{
     margin-left: 355px;
     margin-top: 20px;
     font-family: neue machina;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bold;
+}
+.dddh12{
+    margin-left: 355px;
+    margin-top: 20px;
+    font-family: neue machina;
+    font-size: 25px;
 }
 .dddp{
     margin-left: 355px;
     margin-top: 20px;
     font-family: neue machina;
-    font-size: 30px;
+    font-size: 18px;
     width: 800px;
 }
 .dddbtn{

@@ -1,0 +1,24 @@
+.ucard{
+    width: 1350px;
+    display: flex;
+}
+.uimg{
+    width: 500px;
+}
+.ut{
+
+    margin-top: 100px;
+}
+.ub{
+    width: 200px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+}
+.ub:hover{
+    color: white;
+    background-color: black;
+    border: none;
+}

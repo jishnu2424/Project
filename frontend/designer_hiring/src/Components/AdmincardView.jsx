@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import '../Styles/admincadview.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import ApiRequest from '../Lib/ApiRequest';
+import {toast} from 'react-toastify'
 
 function AdmincardView() {
   const { id } = useParams();
@@ -12,7 +13,7 @@ function AdmincardView() {
   useEffect(() => {
     const fetchArtist = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/admin/viewdesigner");
+        const res = await ApiRequest.get("admin/viewdesigner");
         const artistData = res.data.find((item) => item._id.toString() === id);
         setArtist(artistData || {});
       } catch (err) {
@@ -25,7 +26,8 @@ function AdmincardView() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/admin/deletedesigner/${id}`);
+      await ApiRequest.delete(`admin/deletedesigner/${id}`);
+      toast.error('Deleted Designer')
       navigate('/admin');
     } catch (err) {
       console.log(err);
@@ -38,7 +40,7 @@ function AdmincardView() {
         <>
           <div className="header">
             <img
-              src="https://i.pinimg.com/736x/41/9c/bb/419cbb0513df24eff5a8243fcdf54c9e.jpg"
+              src={artist.photo}
               alt="Profile"
               className="dpic"
             />
@@ -56,7 +58,7 @@ function AdmincardView() {
               <p>work experience</p>
             </div>
             <div>
-              <h3>{artist.montlyIntraction}+</h3>
+              <h3>{artist.monthlyInteraction}+</h3>
               <p>monthly interactions</p>
             </div>
             <div>

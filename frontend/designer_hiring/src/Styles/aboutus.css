@@ -4,6 +4,7 @@
     height: 300px;
     background-size: cover;
     background-repeat: no-repeat
+    
 }
 .ah1{
     font-family: neue machina;
@@ -171,4 +172,9 @@
     background-color: black;
     color: white;
     border: 1pzx solid black;
+}
+.ddiv{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
 }

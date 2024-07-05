@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Row, Form } from 'react-bootstrap';
 import '../Styles/designerprofile.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../Context/userAuth';
 import axios from 'axios';
+import ApiRequest from '../Lib/ApiRequest';
+import {toast} from 'react-toastify'
+
 
 function DesignerProfileSetup() {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [image, setImage] = useState('');
   const { updateUser, currentUser } = useContext(AuthContext);
-
   const [formData, setFormData] = useState({
     username: currentUser?.username || '',
     email: currentUser?.email || '',
@@ -17,7 +21,8 @@ function DesignerProfileSetup() {
     projectCompleted: currentUser?.projectCompleted || '',
     aboutMe: currentUser?.aboutMe || '',
     monthlyInteraction: currentUser?.monthlyInteraction || '',
-    skills:currentUser?.skills || ''
+    skills: currentUser?.skills || '',
+    photo: currentUser?.photo || 'https://i.pinimg.com/564x/97/7e/56/977e568da382e808209b9294e0c0c10a.jpg'
   });
 
   const handleChange = (e) => {
@@ -31,11 +36,13 @@ function DesignerProfileSetup() {
   const updateHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`http://localhost:5000/designer/update/${currentUser._id}`, formData);
+      const response = await ApiRequest.patch(`designer/update/${currentUser._id}`, formData);
+      console.log('Response from API:', response.data);
       updateUser(response.data);
-      console.log('Update successful');
+      toast.success('Update successful');
+      setFormData(response.data);
     } catch (err) {
-      console.log(err);
+      toast.error("Error inUpdation")
     }
   };
 
@@ -43,20 +50,65 @@ function DesignerProfileSetup() {
     try {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      console.log('logout');
+      toast.error('Logged Out');
       updateUser(null);
       navigate("/");
     } catch (err) {
-      console.log(err);
+      console.log('Error during logout:', err);
     }
   };
 
+  const handleAvatarClick = () => {
+    document.getElementById('photo-input').click(); 
+};
+
+  const uploadImage = async (e) => {
+        e.preventDefault(); 
+        const fData = new FormData();
+        fData.append('file', image);
+        fData.append("upload_preset", "design");
+
+        try {
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dldyn546r/image/upload", fData);
+            console.log(res);
+            setFormData({
+                ...formData,
+                photo: res.data.secure_url 
+            });
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    };
+
+
+    const deleteDesigner = async (e)=>{
+      try{
+        await ApiRequest.delete(`designer/delete/${id}`);
+      }catch(err){
+
+        console.log(err);
+      }
+    }
+     
+    
+
+ 
   return (
     <>
       <Form className='ddform' onSubmit={updateHandler}>
-        <img src="https://i.pinimg.com/564x/97/7e/56/977e568da382e808209b9294e0c0c10a.jpg" className='dserimg' width={"150px"} height={"150px"} alt="user profile" />
+        <Form.Control 
+          className='ddf1'
+          type="file"
+          name="photoFile"
+          id='photo-input'
+          onChange={(e)=>setImage(e.target.files[0])}
+          style={{display:"none"}}
+        />
+
+        <img src={formData.photo} className='dserimg' width={"150px"} height={"150px"} alt="user profile" onClick={handleAvatarClick}/>
+        <Button onClick={uploadImage} className='upbtn' >Upload</Button>
         <Button className='dlogout' onClick={handleLogout}>LogOut</Button>
-        <Button className='ddelete'>Delete</Button>
+        <Button className='ddelete' onClick={deleteDesigner}>Delete</Button>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label className='ddff1'>Name</Form.Label>

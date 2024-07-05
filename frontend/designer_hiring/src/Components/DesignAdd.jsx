@@ -1,26 +1,32 @@
 import React, { useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import axios from 'axios'
+import ApiRequest from '../Lib/ApiRequest';
 import '../Styles/designadd.css'
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 function DesignAdd() {
+  const [imageFiles, setImageFiles] = useState([]);
   const [design, setDesign] = useState({
     designType: "",
     designerName: "",
     designName: "",
-    designDescription: ""
+    designDescription: "",
+    design: []
   });
 
-  const addHandler = async () => {
+  const addHandler = async (e) => {
+    e.preventDefault();
     try {
-      const add = await axios.post('http://localhost:5000/design/add', design);
-      console.log(add);
+      const add = await ApiRequest.post('design/add', design);
+      toast.success("Design Added")
       setDesign({
         designType: "",
         designerName: "",
         designName: "",
-        designDescription: ""
+        designDescription: "",
+        design: []
       });
     } catch (err) {
       console.log(err);
@@ -35,12 +41,38 @@ function DesignAdd() {
     }));
   }
 
+  const uploadImage = async () => {
+    if (imageFiles.length === 0) return;
+
+    const uploadedUrls = [];
+    for (let file of imageFiles) {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'design');
+
+      try {
+        const res = await axios.post('https://api.cloudinary.com/v1_1/dldyn546r/image/upload', formData);
+        uploadedUrls.push(res.data.secure_url);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    setDesign(prevDesign => ({
+      ...prevDesign,
+      design: uploadedUrls
+    }));
+
+    console.log('Uploaded URLs:', uploadedUrls);
+  };
+
   return (
     <>
-      <Form className='daform'>
+      <Form className='daform' onSubmit={addHandler}>
         <Form.Group className="mb-3" controlId="formFile">
           <Form.Label className='daff1'>Add Design</Form.Label>
-          <Form.Control className='dadf2' type="file" placeholder="ADD DESIGN" />
+          <Form.Control className='dadf2' type="file" placeholder="ADD DESIGN" id='photo-input' multiple onChange={(e) => setImageFiles([...e.target.files])} />
+          <Button type="button" id="uploadButton" className="dab1" onClick={uploadImage}>Upload</Button>
         </Form.Group>
 
         <Row className="mb-3">
@@ -108,7 +140,7 @@ function DesignAdd() {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" className='dab1' type="button" onClick={addHandler}>
+        <Button variant="primary" className='dab1' type="submit">
           Add Design
         </Button>
         <Link to={'/designerhome'}><Button className='dab1'>Back to Home</Button></Link>
@@ -117,4 +149,4 @@ function DesignAdd() {
   )
 }
 
-export default DesignAdd
+export default DesignAdd;

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import { AuthContext } from '../Context/userAuth';
+import {toast} from 'react-toastify'
 
 function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -29,14 +30,14 @@ function Login() {
       localStorage.setItem('user', JSON.stringify(userData));
 
       const role =userData.role;
-      console.log(role);
+      toast.success("Logged In")
       updateUser(userData);
       if (role === 'user') {
         navigate('/userdash');
       } else if (role === 'designer') {
         navigate('/designerhome');
       } else {
-        console.error("Unknown role:",role);
+        navigate('/admin')
       }
     } catch (err) {
       console.error(err);

@@ -2,6 +2,7 @@ import React from 'react'
 import UserDashBoard from '../Components/UserDashBoard'
 import { Tab, Tabs } from 'react-bootstrap'
 import UserFavCard from '../Components/UserFavCard'
+import Chat from '../Components/Chat/Chat'
 
 function UserDashboardPage() {
   return (
@@ -19,8 +20,8 @@ function UserDashboardPage() {
       <Tab eventKey="profile" title="Profile">
         <UserDashBoard/>  
     </Tab>
-      <Tab eventKey="longer-tab" title="Loooonger Tab">
-        Tab content for Loooonger Tab
+      <Tab eventKey="longer-tab" title="Message">
+        <Chat/>
       </Tab>
     </Tabs>
     </>

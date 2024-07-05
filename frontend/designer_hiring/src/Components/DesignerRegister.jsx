@@ -3,7 +3,8 @@ import "../Styles/designerreg.css";
 import reg from "../Assets/register.png";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import ApiRequest from "../Lib/ApiRequest";
+import {toast} from 'react-toastify'
 
 function DesignerRegister() {
   const navigate = useNavigate();
@@ -40,12 +41,14 @@ function DesignerRegister() {
       userType: "designer" // Reset userType as well
     });
     try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/add/user",
+      const response = await ApiRequest.post(
+        "auth/add/user",
         regData
       );
       const result = response.data;
+      console.log(result);
       if (response.status === 200) {
+        toast.success('Successfully Registered')
         navigate("/login");
       }
     } catch (err) {

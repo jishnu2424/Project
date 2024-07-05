@@ -1,0 +1,17 @@
+.adminlogout{
+    background-color: white;
+    border: black 2px solid;
+    color: black;
+    width: 250px;
+    height: 62px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 1200px;
+}
+.adminlogout:hover{
+    background-color: black;
+    color: white;
+    border: none;
+}

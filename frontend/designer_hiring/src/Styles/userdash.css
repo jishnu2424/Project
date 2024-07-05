@@ -1,89 +1,97 @@
-.udform{
-    width: 1250px;
-    margin-left: 120px;
+.udform {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
     font-family: neue machina;
-
-}
-.udf1{
-    width: 476px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .udf1, .udf2 {
+    width: 100%;
+    max-width: 476px;
     height: 60px;
-    margin-left: 50px;
+    margin: 10px 0;
     color: black;
     font-weight: bold;
-}
-.udf2{
-    width: 476px;
-    height: 60px;
-    margin-left: 50px;
-    color: black;
-    font-weight: bold;
-}
-.udff1{
-    margin-left: 50px;
+    box-sizing: border-box;
+  }
+  
+  .udff1 {
     color: black;
     font-weight: bold;
     font-size: 25px;
-
-}
-.mb-3{
+    margin: 10px 0;
+  }
+  
+  .mb-3 {
     margin-top: 50px;
-}
-.userimg{
-    margin-left: 50px;
-    margin-top: 20px;
+  }
+  
+  .userimg {
+    margin: 20px 0;
     border: 2px solid black;
-}
-.udb1{
+    width: 100px;
+    height: 100px;
+    max-width: 100%;
+  }
+  
+  .udb1, .logout, .udelete {
     background-color: white;
-    border: black 2px solid;
+    border: 2px solid black;
     color: black;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     height: 62px;
     font-size: 20px;
     cursor: pointer;
     font-weight: bold;
-    margin-bottom: 100px;
-    margin-top: 50px;
-    margin-left: 50px;
-}
-.udb1:hover{
+    margin: 10px 0;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  }
+  
+  .udb1:hover, .logout:hover {
     background-color: black;
     color: white;
     border: none;
-}
-.logout{
-    background-color: white;
-    border: black 2px solid;
-    color: black;
-    width: 250px;
-    height: 62px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 100px;
-    margin-top: 50px;
-    margin-left: 550px;
-}
-.logout:hover{
-    background-color: black;
-    color: white;
-    border: none;
-}
-.udelete{
-    background-color: white;
-    border: black 2px solid;
-    color: black;
-    width: 250px;
-    height: 62px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    position: absolute;
-    top: 256px;
-    left: 1150px;
-}
-.udelete:hover{
+  }
+  
+  .udelete:hover {
     background-color: red;
     color: white;
     border: 2px solid black;
-}
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .udf1, .udf2 {
+      max-width: 100%;
+    }
+  
+    .udelete {
+      position: static;
+      margin: 10px 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .udff1 {
+      font-size: 20px;
+    }
+  
+    .userimg {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .udff1 {
+      font-size: 18px;
+    }
+  
+    .udform {
+      padding: 10px;
+    }
+  }
+  

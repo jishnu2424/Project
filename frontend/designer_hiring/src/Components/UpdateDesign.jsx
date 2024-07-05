@@ -2,30 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import ApiRequest from '../Lib/ApiRequest';
+import {toast} from 'react-toastify'
 function UpdateDesign() {
   const navigate =useNavigate()
+  const [imageFiles, setImageFiles] = useState([]);
   const { id } = useParams(); // Assuming you're using react-router to get the design ID from the URL
   const [design, setDesign] = useState({
     designName: '',
     designerName: '',
     designDescription: '',
     designType: '',
+    design: []
   });
 
   useEffect(() => {
-    // Fetch the design details when the component mounts
-    const fetchDesign = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/design/view/${id}`);
-        setDesign(response.data);
+        const response = await ApiRequest.get("design/view");
+        const designData = response.data.find((item) => item._id.toString() === id);
+        setDesign(designData ? [designData] : []);
       } catch (error) {
-        console.error('Error fetching design:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchDesign();
+    fetchData();
   }, [id]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,21 +42,48 @@ function UpdateDesign() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/design/update/${id}`, design);
-      alert('Design updated successfully');
+      await ApiRequest.patch(`design/update/${id}`, design);
+      toast.success('Design updated successfully');
       navigate('/designerhome')
     } catch (error) {
       console.error('Error updating design:', error);
-      alert('Failed to update design');
+      toast.error('Failed to update design');
     }
   };
+
+  const uploadImage = async () => {
+    if (imageFiles.length === 0) return;
+
+    const uploadedUrls = [];
+    for (let file of imageFiles) {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'design');
+
+      try {
+        const res = await axios.post('https://api.cloudinary.com/v1_1/dldyn546r/image/upload', formData);
+        uploadedUrls.push(res.data.secure_url);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    setDesign(prevDesign => ({
+      ...prevDesign,
+      design: uploadedUrls
+    }));
+
+    console.log('Uploaded URLs:', uploadedUrls);
+  };
+
 
   return (
     <>
       <Form className='daform' onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className='daff1'>Update Design</Form.Label>
-          <Form.Control className='dadf2' type="file" placeholder="ADD DESIGN" />
+          <Form.Control className='dadf2' type="file" placeholder="ADD DESIGN" id='photo-input' multiple onChange={(e)=> setImageFiles([...e.target.files])} />
+          <Button type="button" id="uploadButton" className="dab1" onClick={uploadImage}>Upload</Button>
         </Form.Group>
 
         <Row className="mb-3">

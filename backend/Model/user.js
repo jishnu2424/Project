@@ -22,7 +22,7 @@ const Schema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['user', 'designer'],
+        enum: ['user', 'designer','admin'],
         default: 'user'
     },
     workExperience: {
@@ -42,7 +42,11 @@ const Schema = new mongoose.Schema({
     },
     art: {
         type: String
-    }
+    },
+    designs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'designs'
+    }],
 });
 
 const UserDB = mongoose.model('User', Schema);

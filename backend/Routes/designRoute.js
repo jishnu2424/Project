@@ -1,14 +1,23 @@
 const {Router} =require('express')
 const designController = require('../Controller/designController')
+const {verifyToken} =require('../Middleware/verifyToken')
 const route =Router()
 
-route.post('/add',designController.addDesign)
+route.post('/add',verifyToken,designController.addDesign)
 
-route.get('/view',designController.viewDesign)
+route.get('/view',verifyToken,designController.viewDesign)
 
-route.patch('/update/:id',designController.updateDesign)
+route.get('/viewall',designController.viewAllDesign)
 
-route.delete('/delete/:id',designController.deleteDesign)
+route.get('/viewdes/:id',designController.viewDesigndes)
+
+route.get('/viewbyid/:id',designController.viewDesignById)
+
+route.patch('/update/:id',verifyToken,designController.updateDesign)
+
+route.delete('/delete/:id',verifyToken,designController.deleteDesign)
+
+route.get('/fav',verifyToken,designController.viewFavorites)
 
 
 

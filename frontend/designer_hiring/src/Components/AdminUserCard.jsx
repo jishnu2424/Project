@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import prof from '../Assets/Profile Picture Image.jpeg'
 import '../Styles/adminuser.css'
-import axios from 'axios'
+import ApiRequest from '../Lib/ApiRequest';
+import {toast} from 'react-toastify'
 
 function AdminUserCard() {
   const [viewUser, setViewUser] = useState([]);
@@ -13,7 +13,7 @@ function AdminUserCard() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/admin/view");
+      const response = await ApiRequest.get("admin/view");
       const users = response.data.filter(user => user.role === "user");
       setViewUser(users);
     } catch (error) {
@@ -24,9 +24,9 @@ function AdminUserCard() {
   
   const deleteData =async (id)=>{
     try {
-      await axios.delete(`http://localhost:5000/admin/delete/${id}`)
+      await ApiRequest.delete(`admin/delete/${id}`)
       fetchData()
-      
+      toast.error('Deleted User')
     } catch (error) {
       console.log("Delete Error",error);
     }
@@ -35,9 +35,9 @@ function AdminUserCard() {
     <>     
          <div style={{width:"100%",height:"auto",fontFamily:"neue machina"}}>
         <h1 className='admuh1'>Users Details</h1>
-        {viewUser.map((item)=>(
-        <div className='aucad1'>
-            <img src={prof}  alt=""  width={'100px'} height={"100px"} className='admupic'/>
+        {viewUser.map((item,index)=>(
+        <div className='aucad1' key={index}>
+            <img src={item.photo}  alt=""  width={'100px'} height={"100px"} className='admupic'/>
             <h4 className='admuh3'> {item.username}</h4>
             <h5 className='admuh4'>Email : {item.email}</h5>
             <h5 className='admuh4'>Contact :  {item.number}</h5>
