@@ -4,6 +4,8 @@ import { Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import ApiRequest from "../Lib/ApiRequest";
 import {toast} from 'react-toastify'
+import RatePost from "../Components/RatePost";
+import { FaStar } from "react-icons/fa";
 
 function DesignerDesignDetailPage() {
   const { id } = useParams();
@@ -15,7 +17,12 @@ function DesignerDesignDetailPage() {
     const fetchData = async () => {
       try {
         const response = await ApiRequest.get(`/design/viewbyid/${id}`);
-        setViewDesign(response.data);
+        const totalRatings = response.data.ratings ? response.data.ratings.length : 0;
+            const averageRating = totalRatings > 0
+                ? response.data.ratings.reduce((sum, rating) => sum + rating.star, 0) / totalRatings
+                : 0;
+            setViewDesign({ ...response.data, averageRating, totalRatings });
+
       } catch (error) {
         setError("Error fetching data.");
         console.error("Error fetching data:", error);
@@ -23,6 +30,9 @@ function DesignerDesignDetailPage() {
         setLoading(false);
       }
     };
+
+
+    
 
     fetchData();
   }, [id]);
@@ -51,6 +61,22 @@ function DesignerDesignDetailPage() {
 };
 
 
+const renderStars = (averageRating) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+      stars.push(
+          <FaStar
+              key={i}
+              color={i <= averageRating ? '#ffc107' : '#e4e5e9'}
+              style={{width:"50px",height:"50px"}}
+          />
+
+      );
+  }
+  return stars;
+};
+
+
   return (
     <div className="ddpage">
       <h1 className="ddh1">Design Detail</h1>
@@ -66,6 +92,16 @@ function DesignerDesignDetailPage() {
         <h2 className="dddh11">Design Type: {viewDesign.designType}</h2>
         <h2 className="dddh12">Designer: {viewDesign.designerName} </h2>
         <p className="ddp">About Design: {viewDesign.designDescription}</p>
+
+        <RatePost postId={id} />
+        <div style={{marginLeft:"350px"}}>
+          <div className="new-property-rating" >
+            <h3>Total Rating </h3>
+            {renderStars(viewDesign.averageRating)}
+              <span> ({isNaN(viewDesign.averageRating) ? '0.0' : viewDesign.averageRating.toFixed(1)})</span>
+          </div>
+          <br />
+        </div>
         <Button className="ddbtn" onClick={addToFavorites}>Add to Fav</Button>
         <Link to={'/'}><Button className="ddbtn">Back To Home</Button></Link>
       </div>

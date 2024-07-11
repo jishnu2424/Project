@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './chatbox.css';
 import { useParams } from 'react-router-dom';
 import ApiRequest from '../../Lib/ApiRequest';
+import { IoSend } from "react-icons/io5";
+import { toast } from 'react-toastify';
 
 const ChatBox = () => {
-  const { sellerId } = useParams();
+  const { id } = useParams();
   
   // Debugging line to check the value of sellerId
-  console.log("Seller ID from useParams:", sellerId);
+  console.log("Seller ID from useParams:", id);
   
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    if (!sellerId) {
+    if (!id) {
       console.error("Seller ID is undefined");
       return;
     }
@@ -29,14 +31,16 @@ const ChatBox = () => {
     };
 
     fetchMessages();
-  }, [sellerId]);
+  }, [id]);
 
   const handleSendMessage = async () => {
-    if (input.trim() && sellerId) {
+    if (input.trim() && id) {
       try {
-        const response = await ApiRequest.post(`/message/${sellerId}`, { text: input });
+        const response = await ApiRequest.post(`/message/${id}`, { text: input });
         setMessages([...messages, response.data]);
         setInput('');
+        toast.success('Message Send');
+
       } catch (error) {
         console.error(error);
       }
@@ -54,14 +58,17 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="chatbox-container">
-      <div className="chatbox-messages">
-        {messages && messages.map((msg, index) => (
-          <div key={index} className="chatbox-message">
-            {msg.text}
-          </div>
-        ))}
-      </div>
+    // <div className="chatbox-container">
+    //   <div className="chatbox-messages">
+    //     {messages && messages.map((msg, index) => (
+    //       <div key={index} className="chatbox-message">
+    //         {msg.text}
+    //       </div>
+    //     ))}
+    //   </div>
+    <>
+    <h1 className='contacth1'> Contact Designer </h1>
+    <div style={{marginBottom:"50px"}}>
       <div className="chatbox-input">
         <input
           type="text"
@@ -70,9 +77,13 @@ const ChatBox = () => {
           onKeyPress={handleKeyPress}
           placeholder="Type a message..."
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button onClick={handleSendMessage}><IoSend />
+        </button>
       </div>
-    </div>
+      </div>
+      </>
+
+    // </div>
   );
 };
 

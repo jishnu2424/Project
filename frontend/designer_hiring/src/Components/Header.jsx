@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { Button, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/userAuth";
 import '../Styles/header.css'
+import { useSelector, useDispatch } from 'react-redux'; // Import useSelector and useDispatch from Redux
+
 
 
 function Header() {
-  const { currentUser, updateUser } = useContext(AuthContext);
+  const currentUser = useSelector(state => state.auth.currentUser); // Access currentUser from Redux store
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  
   const handleLoginClick = () => {
     if (currentUser) {
       switch (currentUser.role) {

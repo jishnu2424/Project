@@ -4,20 +4,22 @@ import { Button, Tab, Tabs } from 'react-bootstrap'
 import AdminUserCard from '../Components/AdminUserCard'
 import AdminContactView from '../Components/AdminContactView'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../Context/userAuth'
 import '../Styles/adminlogout.css'
 import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { updateUser } from '..//Components/Redux/userSlice'; // Import updateUser action
+
 
 function AdminPage() {
-  const { updateUser } = useContext(AuthContext);
   const navigate =useNavigate()
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     try {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       console.log('Logout successful');
-      updateUser(null);
+      dispatch(updateUser(null)); // Dispatch updateUser action from Redux to update currentUser
       toast.error('Logged Out')
       navigate("/");
     } catch (err) {

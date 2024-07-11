@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react';
 import '../Styles/login.css';
-import login from '../Assets/loginimg.png';
+import loginimg from '../Assets/loginimg.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
-import { AuthContext } from '../Context/userAuth';
 import {toast} from 'react-toastify'
+import { useDispatch } from 'react-redux'; // Import useDispatch from Redux
+import { login } from '../Components/Redux/userSlice'; // Import login action from authSlice
+import ApiRequest from '../Lib/ApiRequest'
 
 function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const [error,setError]=useState('');
+  const dispatch =useDispatch()
 
-  const {updateUser} =useContext(AuthContext)
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,16 +23,18 @@ function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/auth/login/user",loginData);
+      const response = await ApiRequest.post("auth/login/user",loginData);
       const token =response.data.token;
       const userData = response.data.data;
 
       localStorage.setItem('token',token)
       localStorage.setItem('user', JSON.stringify(userData));
 
+      dispatch(login(userData));
+
+
       const role =userData.role;
       toast.success("Logged In")
-      updateUser(userData);
       if (role === 'user') {
         navigate('/userdash');
       } else if (role === 'designer') {
@@ -47,7 +50,7 @@ function Login() {
 
   return (
     <div style={{ backgroundColor: "black", fontFamily: "neue machina", color: "white", width: "100%", height: "800px" }}>
-      <img src={login} alt="login" style={{ marginLeft: "750px", marginTop: "250px" }} />
+      <img src={loginimg} alt="login" style={{ marginLeft: "750px", marginTop: "250px" }} />
       <h1 className='llh1'>Login to your account</h1>
 
       <form onSubmit={handleLogin} className='loginform'>

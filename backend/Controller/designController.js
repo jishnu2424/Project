@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const designDb = require('../Model/designs')
 const userDB =require('../Model/user')
+const DesignDB = require('../Model/designs')
 require('dotenv').config()
 
 const addDesign =async(req,res)=>{
@@ -133,4 +134,56 @@ const viewFavorites = async (req, res) => {
       return res.status(500).json({ message: "Internal server error" });
     }
   };
-module.exports ={addDesign,viewDesign,updateDesign,deleteDesign,viewAllDesign,viewDesignById,viewDesigndes,viewFavorites}
+
+
+
+  const rating = async (req,res)=>{
+    const _id = req.userId
+    const {star,postId} = req.body
+    try {
+        const post = await DesignDB.findById(postId)
+        let alreadyRated = post.ratings.find(rating => 
+            rating.postedBy && rating.postedBy.toString() === _id.toString()
+        );
+    
+        if (alreadyRated) {
+            // Update existing rating
+            const updateRating = await DesignDB.updateOne(
+                { _id: postId, "ratings.postedBy": _id },
+                { $set: { "ratings.$.star": star } },
+                { new: true }
+            );
+    }else{
+        const rateProduct = await DesignDB.findByIdAndUpdate(postId,
+            {
+                $push:{
+                    ratings:{
+                        star:star,
+                        postedBy:_id,
+                    },
+                },
+            },
+            {
+                new:true,
+            }
+        )
+    }
+    
+    const getAllRatings = await DesignDB.findById(postId)
+    let totalRatings = getAllRatings.ratings.length;
+    let ratingSum = getAllRatings.ratings.map((item)=>item.star).reduce((prev,curr)=>prev+curr,0);
+    let actualRating = Math.round(ratingSum/totalRatings)
+    const finalProduct = await DesignDB.findByIdAndUpdate(
+        postId,
+        {
+            totalRatings:actualRating
+        },
+        {new:true}
+    )
+    res.json(finalProduct)
+    } catch (error) {
+        throw new Error (error)
+    }
+    }
+    
+module.exports ={addDesign,viewDesign,updateDesign,deleteDesign,viewAllDesign,viewDesignById,viewDesigndes,viewFavorites,rating}

@@ -19,6 +19,8 @@ route.delete('/delete/:id',verifyToken,designController.deleteDesign)
 
 route.get('/fav',verifyToken,designController.viewFavorites)
 
+route.put('/rating',verifyToken,designController.rating)
+
 
 
 module.exports=route

@@ -23,16 +23,19 @@ import DesignerHomePage from '../Pages/DesignerHomePage'
 import DesignerDesignMain from '../Components/DesignerDesignMain'
 import DesignAdd from '../Components/DesignAdd'
 import UpdateDesign from '../Components/UpdateDesign'
-import { AuthContextProvider } from '../Context/userAuth'
 import { SocketContextProvider } from '../Context/SocketContext'
 import ChatBox from '../Components/Chat/ChatBox'
+import { Provider } from 'react-redux'
+import store from '../Components/Redux/store'
+
+
 
 
 function Router() {
   return (
     <div>
         <BrowserRouter>
-        <AuthContextProvider>
+        <Provider store={store}>
           <SocketContextProvider>
         <ScrollToTop/>
         <Header/>
@@ -61,7 +64,7 @@ function Router() {
         <Footer/>
         <ToastContainer/>
         </SocketContextProvider>
-        </AuthContextProvider>
+        </Provider>
         </BrowserRouter>
     </div>
   )

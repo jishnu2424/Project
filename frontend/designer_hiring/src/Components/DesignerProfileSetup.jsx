@@ -2,17 +2,22 @@ import React, { useContext, useState } from 'react';
 import { Button, Col, Row, Form } from 'react-bootstrap';
 import '../Styles/designerprofile.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../Context/userAuth';
 import axios from 'axios';
 import ApiRequest from '../Lib/ApiRequest';
 import {toast} from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '..//Components/Redux/userSlice'; // Import updateUser action
+
+
 
 
 function DesignerProfileSetup() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const navigate = useNavigate();
   const [image, setImage] = useState('');
-  const { updateUser, currentUser } = useContext(AuthContext);
+  // const { updateUser, currentUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     username: currentUser?.username || '',
     email: currentUser?.email || '',
@@ -38,7 +43,7 @@ function DesignerProfileSetup() {
     try {
       const response = await ApiRequest.patch(`designer/update/${currentUser._id}`, formData);
       console.log('Response from API:', response.data);
-      updateUser(response.data);
+      dispatch(updateUser(response.data)); // Dispatch updateUser action
       toast.success('Update successful');
       setFormData(response.data);
     } catch (err) {
@@ -51,7 +56,7 @@ function DesignerProfileSetup() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       toast.error('Logged Out');
-      updateUser(null);
+      dispatch(updateUser(null)); // Dispatch updateUser action from Redux to update currentUser
       navigate("/");
     } catch (err) {
       console.log('Error during logout:', err);
@@ -81,14 +86,7 @@ function DesignerProfileSetup() {
     };
 
 
-    const deleteDesigner = async (e)=>{
-      try{
-        await ApiRequest.delete(`designer/delete/${id}`);
-      }catch(err){
-
-        console.log(err);
-      }
-    }
+   
      
     
 
@@ -108,7 +106,7 @@ function DesignerProfileSetup() {
         <img src={formData.photo} className='dserimg' width={"150px"} height={"150px"} alt="user profile" onClick={handleAvatarClick}/>
         <Button onClick={uploadImage} className='upbtn' >Upload</Button>
         <Button className='dlogout' onClick={handleLogout}>LogOut</Button>
-        <Button className='ddelete' onClick={deleteDesigner}>Delete</Button>
+        {/* <Button className='ddelete' onClick={deleteDesigner}>Delete</Button> */}
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
             <Form.Label className='ddff1'>Name</Form.Label>

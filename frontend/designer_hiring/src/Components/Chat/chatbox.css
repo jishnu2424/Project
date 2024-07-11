@@ -26,7 +26,11 @@
   
   .chatbox-input {
     display: flex;
-    border-top: 1px solid #ccc;
+    border: 1px solid #ccc;
+    width: 1000px;
+    margin-left: 250px;
+    margin-top: 50px;
+    
   }
   
   .chatbox-input input {
@@ -43,9 +47,16 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    width: 100px;
   }
   
   .chatbox-input button:hover {
     background-color: #0056b3;
+  }
+  .contacth1{
+    text-align: center;
+    font-family: neue machina;
+    font-weight: bold;
+    font-size: 50px;
   }
   

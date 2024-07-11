@@ -2,15 +2,18 @@ import React, { useContext, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import '../Styles/userdash.css';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Context/userAuth';
 import axios from 'axios';
 import ApiRequest from '../Lib/ApiRequest';
 import {toast} from 'react-toastify'
+import { updateUser } from '..//Components/Redux/userSlice'; // Import updateUser action
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function UserDashBoard() {
   const navigate = useNavigate();
-  const { updateUser, currentUser } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  // const { updateUser, currentUser } = useContext(AuthContext);
   const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
     username: currentUser?.username || '',
@@ -42,7 +45,7 @@ function UserDashBoard() {
     try {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      updateUser(null);
+      dispatch(updateUser(null)); // Dispatch updateUser action from Redux to update currentUser
       toast.error('logged Out');
       navigate("/");
     } catch (err) {

@@ -1,18 +1,18 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "./chat.css";
 import { format } from 'timeago.js';
-import { AuthContext } from "../../Context/userAuth";
 import { SocketContext } from "../../Context/SocketContext";
 import ApiRequest from '../../Lib/ApiRequest'
 import { IoSend } from "react-icons/io5";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 
 
 function Chat() {
   const [chat, setChat] = useState(null);
   const [chats, setChats] = useState([]);
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const { socket } = useContext(SocketContext);
   const messageEndRef = useRef()
 
@@ -111,7 +111,7 @@ function Chat() {
           <div className="message" onClick={() => handleOpenChat(items._id, items.receiver)}>
             <img
               src={items.receiver?.photo || "https://i.pinimg.com/564x/a8/0e/36/a80e3690318c08114011145fdcfa3ddb.jpg"}
-              alt={items.receiver?.username || "Default Avatar"}
+              alt={items.receiver?.photo || "Default Avatar"}
             />
             <span>{items.receiver?.username || "Unknown User"}</span>
             <p>{items.lastMessage || "No messages yet"}</p>

@@ -20,7 +20,7 @@ function UserDashboardPage() {
       <Tab eventKey="profile" title="Profile">
         <UserDashBoard/>  
     </Tab>
-      <Tab eventKey="longer-tab" title="Message">
+      <Tab eventKey="longer-tab" title="INBOX">
         <Chat/>
       </Tab>
     </Tabs>

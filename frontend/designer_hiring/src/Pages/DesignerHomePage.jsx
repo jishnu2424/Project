@@ -19,7 +19,7 @@ function DesignerHomePage() {
       <Tab eventKey="profile" title="Profile">
       <DesignerProfileSetup/>
     </Tab>
-      <Tab eventKey="longer-tab" title="Message">
+      <Tab eventKey="longer-tab" title="INBOX">
         <Chat/>
       </Tab>
     </Tabs></>

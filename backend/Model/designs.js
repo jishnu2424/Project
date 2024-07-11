@@ -1,4 +1,5 @@
 const mongoose = require ('mongoose')
+const { type } = require('os')
 const schema = new mongoose.Schema({
     designType:{
         type:String,
@@ -28,6 +29,15 @@ const schema = new mongoose.Schema({
     },
     favorites: 
     [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
+    ratings:[{
+        star:Number,
+        postedBy:{type:mongoose.Schema.Types.ObjectId,ref:"users"}
+    }],
+    totalRating:{
+        type:String,
+        default:0
+    }
+
 })
 
 const DesignDB =mongoose.model('designs',schema)
