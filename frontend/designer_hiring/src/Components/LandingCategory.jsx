@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row, Pagination } from 'react-bootstrap';
 import '../Styles/landingcategory.css';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ApiRequest from '../Lib/ApiRequest';
 
 function LandingCategory() {
@@ -9,7 +9,8 @@ function LandingCategory() {
     const [filteredArts, setFilteredArts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(6);
-    const navigate =useNavigate()
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -60,7 +61,7 @@ function LandingCategory() {
     return (
         <div className='category'>
             <h1 className='cath1'>Design Category</h1>
-            <div style={{ display: "flex" }}>
+            <div className="button-group">
                 <Button className='catb' onClick={() => filterResult('All')}>All</Button>
                 <Button className='catb' onClick={() => filterResult('Electronic Art')}>Electronic Art</Button>
                 <Button className='catb' onClick={() => filterResult('Drawing')}>Drawing</Button>
@@ -73,33 +74,30 @@ function LandingCategory() {
             </div>
 
             <div className="catcad">
-                <Container fluid="md">
+                <Container>
                     <Row>
                         {currentItems.length > 0 ? (
                             currentItems.map((item) => (
-                                <Col md={6} lg={4} className="mb-4" key={item._id}>
-                                        <Card style={{ width: "401px" }} className="catcard" onClick={()=>{localStorage.token?navigate(`/designer/desdetail/${item._id}`):navigate('/login')}}
-                                        >
-                                            <Card.Img
-                                                variant="top"
-                                                src={item.design}
-                                                alt={item.designName}
-                                                width={"401"}
-                                                height={"290"}
-                                            />
-                                            <div className="overlay">
-                                                <div className="text">{item.designType}</div>
-                                            </div>
-                                            {/* <h2 style={{ fontFamily: "neue machina" }}>{item.designName}</h2> */}
-                                        </Card>
+                                <Col xs={12} sm={6} md={4} lg={4} className="mb-4" key={item._id}>
+                                    <Card className="catcard" onClick={() => { localStorage.token ? navigate(`/designer/desdetail/${item._id}`) : navigate('/login') }}>
+                                        <Card.Img
+                                            variant="top"
+                                            src={item.design}
+                                            alt={item.designName}
+                                            className="catcard-img"
+                                        />
+                                        <div className="overlay">
+                                            <div className="text">{item.designType}</div>
+                                        </div>
+                                    </Card>
                                 </Col>
                             ))
                         ) : (
-                            <h1 style={{ color: "black", fontWeight: "bold" }}>No Arts Available</h1>
+                            <h1 className="no-arts">No Arts Available</h1>
                         )}
                     </Row>
-                    <div style={{marginLeft:"600px"}}>    
-                         {renderPagination()}
+                    <div className="pagination-container">
+                        {renderPagination()}
                     </div>
                 </Container>
             </div>
