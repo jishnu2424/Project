@@ -3,6 +3,7 @@ import { Tab, Tabs } from 'react-bootstrap'
 import DesignerProfileSetup from '../Components/DesignerProfileSetup'
 import DesignerDesign from '../Components/DesignerDesign'
 import Chat from '../Components/Chat/Chat'
+import ViewHire from '../Components/ViewHire'
 
 function DesignerHomePage() {
   return (
@@ -21,6 +22,9 @@ function DesignerHomePage() {
     </Tab>
       <Tab eventKey="longer-tab" title="INBOX">
         <Chat/>
+      </Tab>
+      <Tab eventKey="hire" title="Hire Info">
+        <ViewHire/>
       </Tab>
     </Tabs></>
   )

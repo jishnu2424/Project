@@ -17,6 +17,27 @@ const viewUser = async (req,res)=>{
 }
 
 
+const viewuserId = async (req, res) => {
+    const { id } = req.params;
+    try {
+        // Find the user by ID
+        const user = await userDB.findById(id);
+        
+        // Check if the user was found
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Send the user data in the response
+        return res.status(200).json(user);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+
+
 const deleteUser =async(req,res)=>{
     try{
         const {id} = req.params
@@ -91,4 +112,4 @@ const addToFavorites = async (req, res) => {
   }
 
 
-module.exports={updateUser,viewUser,deleteUser,addToFavorites,deletFromFavorites}
+module.exports={updateUser,viewUser,deleteUser,addToFavorites,deletFromFavorites,viewuserId}

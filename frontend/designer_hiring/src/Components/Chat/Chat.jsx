@@ -3,24 +3,19 @@ import "./chat.css";
 import { format } from 'timeago.js';
 import { SocketContext } from "../../Context/SocketContext";
 import ApiRequest from '../../Lib/ApiRequest'
-import { IoSend } from "react-icons/io5";
-import { IoCloseCircleOutline } from "react-icons/io5";
+import { IoSend, IoCloseCircleOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
-
-
 
 function Chat() {
   const [chat, setChat] = useState(null);
   const [chats, setChats] = useState([]);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { socket } = useContext(SocketContext);
-  const messageEndRef = useRef()
+  const messageEndRef = useRef();
 
   useEffect(() => {
-   messageEndRef.current?.scrollIntoView({behavior:"smooth"})
-  }, [chat])
-  
-
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chat]);
 
   const getChats = async () => {
     try {
@@ -92,7 +87,6 @@ function Chat() {
 
       socket.on("getMessage", messageHandler);
 
-      // Cleanup function to remove the listener when the component unmounts or dependencies change
       return () => {
         socket.off("getMessage", messageHandler);
       };
@@ -106,7 +100,7 @@ function Chat() {
   return (
     <div className="chat">
       <h1>Messages</h1>
-      {chats.map((items) => (  
+      {chats.map((items) => (
         <div className="messages" key={items._id}>
           <div className="message" onClick={() => handleOpenChat(items._id, items.receiver)}>
             <img
@@ -117,9 +111,8 @@ function Chat() {
             <p>{items.lastMessage || "No messages yet"}</p>
           </div>
         </div>
-        
       ))}
-                  <div ref={messageEndRef}></div>
+      <div ref={messageEndRef}></div>
 
       {chat && (
         <div className="chatBox">
@@ -131,7 +124,7 @@ function Chat() {
               />
               {chat.receiver?.username || "Unknown User"}
             </div>
-            <span className="close" onClick={() => setChat(null)}><IoCloseCircleOutline style={{width:"50px",height:"50px"}} />
+            <span className="close" onClick={() => setChat(null)}><IoCloseCircleOutline style={{ width: "50px", height: "50px" }} />
             </span>
           </div>
           <div className="center">
@@ -141,13 +134,13 @@ function Chat() {
                 textAlign: item.userId === currentUser._id ? "right" : "left",
               }} key={item._id}>
                 <p className="chattext">{item.text}</p>
-                <span style={{color:'white'}}>{format(item.createdAt)}</span>
+                <span style={{ color: 'white' }}>{format(item.createdAt)}</span>
               </div>
             ))}
           </div>
           <form onSubmit={handleSubmit} className="bottom">
-            <input type="text" name="text" className="chatarea" placeholder="Type Messaage"/>
-            <button type="submit" className="chatbtn"><IoSend style={{height:"40px", width:"40px",marginLeft:"9px",color:"white"}} /></button>
+            <input type="text" name="text" className="chatarea" placeholder="Type Message" />
+            <button type="submit" className="chatbtn"><IoSend style={{ height: "40px", width: "40px", marginLeft: "9px", color: "white" }} /></button>
           </form>
         </div>
       )}

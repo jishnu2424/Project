@@ -13,4 +13,6 @@ route.post('/favs/:id',verifyToken,userController.addToFavorites)
 
 route.delete('/favdelete/:id',verifyToken,userController.deletFromFavorites)
 
+route.get('/viewid/:id',userController.viewuserId)
+
 module.exports=route

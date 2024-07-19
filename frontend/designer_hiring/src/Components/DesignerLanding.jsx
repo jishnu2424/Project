@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/designerlanding.css";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Toast } from "react-bootstrap";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ApiRequest from "../Lib/ApiRequest";
+import { toast } from 'react-toastify'
 
 // Importing images
 
@@ -59,6 +60,18 @@ function DesignerLanding() {
     }
    }
 
+
+   const addHire = async()=>{
+    try{
+      const res =await ApiRequest.post(`/hire/add/${id}`)
+      toast.success("Designer Hired")
+      return res.data 
+    }catch(err){
+      console.log(err);
+    }
+   }
+
+
   return (
     <>
       <div className="sticky-container" />
@@ -95,6 +108,7 @@ function DesignerLanding() {
           <div className="header-text">
             <h2 className="dpn">{artist.username}</h2>
           </div>
+          <Button className="dsbtn" onClick={addHire}>Hire now</Button>
           <Button className="dsbtn" onClick={()=>createChat(artist._id)}>Message now</Button>
         </div>
         

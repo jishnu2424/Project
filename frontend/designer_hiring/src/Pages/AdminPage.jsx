@@ -8,6 +8,7 @@ import '../Styles/adminlogout.css'
 import {toast} from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { updateUser } from '..//Components/Redux/userSlice'; // Import updateUser action
+import ViewHireAdmin from '../Components/ViewHireAdmin'
 
 
 function AdminPage() {
@@ -45,6 +46,9 @@ function AdminPage() {
         </Tab>
         <Tab eventKey="longer-tab" title="Contact View">
           <AdminContactView/>
+        </Tab>
+        <Tab eventKey="longer-b" title="Hire Info View">
+          <ViewHireAdmin/>
         </Tab>
       </Tabs>
     </>

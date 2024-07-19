@@ -8,6 +8,7 @@ const authRoute =require('./Routes/authRoute');
 const designRoute = require('./Routes/designRoute.js')
 const messageRoutes = require('./Routes/messageRoute.js');
 const chatRoutes = require('./Routes/chatRoute.js');
+const hireRoute = require('./Routes/hireRoute.js')
 const bodyParser = require('body-parser')
 const cors =require('cors')
 const app = express()
@@ -24,6 +25,7 @@ app.use('/auth',authRoute)
 app.use('/design',designRoute)
 app.use('/chat',chatRoutes)
 app.use('/message',messageRoutes)
+app.use('/hire',hireRoute)
 
 app.listen(5000,()=>{
     console.log("server running");
