@@ -1,6 +1,6 @@
 .ddpage{
     width: 100%;
-    height: 1200px;
+    height: 100%;
 }
 .ddh1{
     font-family: neue machina;
@@ -24,7 +24,7 @@
     margin-left: 355px;
     margin-top: 20px;
     font-family: neue machina;
-    font-size: 30px;
+    font-size: 20px;
     width: 800px;
 }
 .ddbtn{
