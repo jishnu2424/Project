@@ -24,7 +24,7 @@ function Privacy() {
           STATED "LAST UPDATED" DATE. WE RECOMMEND THAT YOU CHECK THE POLICY
           PERIODICALLY FOR ANY UPDATES OR CHANGES.
         </p>
-        <h2 className="ph2">1.Information We Process.</h2>
+        <h2 className="ph2">1. Information We Process.</h2>
         <p className="pp">
           The types of information we process depends on how you use our
           Services. Many of our Services require users to set up an account,
@@ -35,38 +35,39 @@ function Privacy() {
           to do so, Dribbble collects payments data and other information
           required to comply with relevant legal obligations.
         </p>
-        <h2 className="ph2">2.Payment Information</h2>
+        <h2 className="ph2">2. Payment Information</h2>
         <p className="pp">
           Payment Information: We may collect payment information, such as
           credit card details or PayPal account information, when you make
           payments through our platform.
         </p>
-        <h2 className="ph2">3.Usage Information</h2>
+        <h2 className="ph2">3. Usage Information</h2>
         <p className="pp">
           Usage Information: We may collect data related to your interactions
           with our website, including log data, device information, and usage
           patterns.
         </p>
-        <h2 className="ph2">4.How We Collect Information</h2>
+        <h2 className="ph2">4. How We Collect Information</h2>
         <p className="pp">We collect information through the following methods:</p>
         <ol>
-          <li> Registration and Profile Creation</li>
+          <li>Registration and Profile Creation</li>
           <li>Cookies and Tracking Technologies</li>
           <li>Third-Party Integrations</li>
         </ol>
-        <h2 className="ph2">5.Data Security</h2>
+        <h2 className="ph2">5. Data Security</h2>
         <p className="pp">
           We take data security seriously and employ reasonable measures to
           protect your information from unauthorized access, disclosure,
           alteration, and destruction.
         </p>
-        <h2 className="ph2">6.Purpose of Data Collection</h2>
+        <h2 className="ph2">6. Purpose of Data Collection</h2>
         <p className="pp">We collect and use your information for the following purposes:</p>
         <ol>
-            <li> Account creation and management </li>
-            <li>Facilitating payments and transactions </li>
-            <li>Providing customer support</li>
-            <li>Improving our services e. Sending promotional materials and updates (with your consent)</li>
+          <li>Account creation and management</li>
+          <li>Facilitating payments and transactions</li>
+          <li>Providing customer support</li>
+          <li>Improving our services</li>
+          <li>Sending promotional materials and updates (with your consent)</li>
         </ol>
       </div>
     </>

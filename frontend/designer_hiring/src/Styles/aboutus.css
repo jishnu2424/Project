@@ -1,180 +1,183 @@
-.abt{
+.abt {
     background-image: url('../Assets/aboutus.png');
     width: 100%;
     height: 300px;
     background-size: cover;
-    background-repeat: no-repeat
-    
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+    text-align: left;
 }
-.ah1{
+
+.ah1 {
     font-family: neue machina;
-    font-size: 80px;
+    font-size: 5vw;
     font-weight: bold;
-    color: black; 
-    margin-left: 50px;  
+    color: black;
 }
-.ap{
+
+.ap {
     font-family: neue machina;
     font-weight: bold;
     color: black;
-    font-size: 20px;
-    margin-left: 50px;
+    font-size: 2vw;
     margin-top: 30px;
-
 }
-.acnt{
+
+.acnt {
     background-color: white;
     width: 100%;
-    height: 700px;
+    padding: 50px 10%;
 }
-.mission{
-    width: 772px;
-    height: 164px;
+
+.mission, .vision, .Proposition {
     background-color: #1E1E1E;
     color: white;
     font-family: neue machina;
-    margin-top: 70px;
-    margin-left: 70px
-
+    padding: 20px;
+    margin-top: 40px;
+    flex: 1 1 300px;
 }
-.amh3{
+
+.amh3 {
     font-weight: bold;
-    font-size: 36px;
-    margin-left: 50px;
-}
-.amp{
-    font-size: 32px;
-    margin-left: 10px;
-
-}
-.line1{
-    height: 3px;
-    width: 250px;
-    background-color: black;
-    position: absolute;
-    left: 840px;
-    top: 550px;
-}
-.line2{
-    width: 3px;
-    height: 125px;
-    background-color: black;
-    position: absolute;
-    left: 1087px;
-    top: 550px;
-}
-.vision{
-    width: 772px;
-    height: 164px;
-    background-color: #1E1E1E;
-    color: white;
-    font-family: neue machina;
-    margin-top: 40px;
-    margin-left: 690px
-}
-.line3{
-    width: 3px;
-    height: 125px;
-    background-color: black;
-    position: absolute;
-    left: 1087px;
-    top: 837px;
-}
-.line4{
-    height: 3px;
-    width: 250px;
-    background-color: black;
-    position: absolute;
-    left: 840px;
-    top: 960px;
-}
-.Proposition
-{
-    width: 772px;
-    height: 164px;
-    background-color: #1E1E1E;
-    color: white;
-    font-family: neue machina;
-    margin-top: 40px;
-    margin-left: 70px
+    font-size: 2vw;
+    margin-bottom: 20px;
 }
 
-.sucss1{
+.amp {
+    font-size: 1.5vw;
+}
+
+.line1, .line2, .line3, .line4 {
+    background-color: black;
+}
+
+.line1, .line3 {
+    height: 3px;
     width: 100%;
-    height: 700px;
+    margin: 20px 0;
+}
+
+.line2, .line4 {
+    width: 3px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+.sucss1 {
+    width: 100%;
     background-color: white;
     font-family: neue machina;
+    padding: 50px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.asb{
-    width: 833px;
-    height: 380px;
+
+.asb {
     border: 2px solid black;
-    position: absolute;
-    top: 1260px;
-    left: 100px;
     background-color: white;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
     z-index: 500;
+    position: relative;
+}
 
-}
-.ash2{
-    margin-left: 50px;
+.ash2 {
     font-weight: bold;
-    font-size: 30px;
-    margin-top: 50px;
+    font-size: 2.5vw;
+    margin-bottom: 20px;
 }
-.asp{
-    margin-left: 50px;
-    font-weight: bold;
-    font-size:25px;
+
+.asp, .asp1 {
+    font-size: 1.5vw;
 }
-.asp1{
-    margin-left: 50px;
-    font-size: 25px;
-}
-.ourservice{
+
+.ourservice {
     background-color: black;
     color: white;
     font-family: neue machina;
-    width: 100%;
-    height: 300px;
+    padding: 50px 10%;
+    text-align: center;
 }
-.getint{
+
+.getint {
     font-family: neue machina;
-    width: 1200px;
-    margin-right: 50px;
-    height: 800px;
+    padding: 50px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.gh1{
-    position: absolute;
-    top: 2300px;
-    left: 600px;
+
+.gh1 {
     font-weight: bold;
-    font-size: 64px;
+    font-size: 4vw;
+    text-align: center;
 }
-.gp{
-    position: absolute;
-    left: 600px;
-    top: 2400px;
-    font-size: 32px;
+
+.gp {
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 30px;
+    max-width: 800px;
 }
-.gb{
-    position: relative;
-    top: 250px;
-    left: 50px;
+
+.gb {
     width: 250px;
     height: 82px;
     color: black;
     background-color: white;
     border: 2px solid black;
     font-weight: bold;
+    margin-top: 50px;
 }
-.gb:hover{
+
+.gb:hover {
     background-color: black;
     color: white;
-    border: 1pzx solid black;
+    border: 1px solid black;
 }
-.ddiv{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+
+@media (max-width: 768px) {
+    .ah1 {
+        font-size: 7vw;
+    }
+
+    .ap {
+        font-size: 4vw;
+    }
+
+    .amh3 {
+        font-size: 4vw;
+    }
+
+    .amp {
+        font-size: 3vw;
+    }
+
+    .ash2 {
+        font-size: 5vw;
+    }
+
+    .asp, .asp1 {
+        font-size: 4vw;
+    }
+
+    .gh1 {
+        font-size: 6vw;
+    }
+
+    .gp {
+        font-size: 4vw;
+    }
+
+    .gb {
+        width: 200px;
+        height: 60px;
+        font-size: 3vw;
+    }
 }

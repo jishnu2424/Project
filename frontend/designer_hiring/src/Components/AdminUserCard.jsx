@@ -38,7 +38,7 @@ function AdminUserCard() {
       <div style={{width:"100%",height:"auto",fontFamily:"neue machina"}}>
         {viewUser.map((item, index) => (
           <div className='aucad1' key={index}>
-            <img src={item.photo} alt="" width={'100px'} height={"100px"} className='admupic'/>
+            <img src={item.photo} alt="" className='admupic'/>
             <h4 className='admuh3'> {item.username}</h4>
             <h5 className='admuh4'>Email : {item.email}</h5>
             <h5 className='admuh4'>Contact :  {item.number}</h5>

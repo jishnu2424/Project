@@ -74,9 +74,7 @@ function AdmincardView() {
           <div className="skills">
             <h2>Skills And Expertise</h2>
             <div className="skills-list">
-              {artist.skill && artist.skill.map((skill, index) => (
-                <span key={index}>{skill}</span>
-              ))}
+            {artist.skills}
             </div>
           </div>
         </>

@@ -1,6 +1,13 @@
-.adminlogout{
+
+
+
+  
+
+
+  
+  .adminlogout {
     background-color: white;
-    border: black 2px solid;
+    border: 2px solid black;
     color: black;
     width: 250px;
     height: 62px;
@@ -8,10 +15,49 @@
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
-    margin-left: 1200px;
-}
-.adminlogout:hover{
+    margin-left: auto; /* Push the button to the far right */
+    margin-right: 10px; /* Ensure some margin on the right */
+  }
+  
+  .adminlogout:hover {
     background-color: black;
     color: white;
     border: none;
-}
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+ 
+  
+    .adminlogout {
+      width: 200px;
+      height: 55px;
+      font-size: 18px;
+      margin-left: auto; /* Keep it aligned to the right */
+      margin-right: 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+  
+  
+    .adminlogout {
+      width: 180px;
+      height: 50px;
+      font-size: 16px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+  
+    .adminlogout {
+      width: 160px;
+      height: 45px;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
+  

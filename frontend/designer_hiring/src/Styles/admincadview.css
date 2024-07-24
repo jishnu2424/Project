@@ -1,105 +1,163 @@
 .profile-card {
-    width: 1450px;
-    border-radius: 10px;
-    margin-left: 35px;
-    background-color: black;
-    color: white;
-    padding: 20px;
-    font-family: neue machina;
-    height: 700px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .dpic {
-    border-radius: 50%;
-    width: 92px;
-    height: 92px;
-  }
-  
-  .header-text {
-    flex: 1;
-    margin-left: 20px;
-  }
-  
-  .dpn {
-    margin: 0;
-  }
-  
-  .stats {
-    display: flex;
-    gap: 10px;
-    margin-top: 5px;
-  }
-  
-  .stats span {
-    display: inline-block;
-  }
-  
-  .dbtn {
-    background-color: white;
-    color: black;
-    width: 250px;
-    height: 82px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .dbtn1 {
-    background-color: white;
-    color: black;
-    width: 250px;
-    height: 82px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-.dbtn1:hover{
-    background-color: black;
-    color: white;
-    border: 2px white solid;
+  width: 100%; /* Use 100% width to adapt to the screen size */
+  max-width: 1450px; /* Maximum width to ensure it doesn't exceed this value */
+  border-radius: 10px;
+  margin: 50px auto; /* Center the card with auto margins */
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: "neue machina";
+  height: auto; /* Allow height to adjust based on content */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
-  .dbtn:hover{
-    background-color: red;
-    color: white;
-    border: white 2px  solid;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dpic {
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+}
+
+.header-text {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.dpn {
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.stats span {
+  display: inline-block;
+}
+
+.dbtn, .dbtn1 {
+  background-color: white;
+  color: black;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 250px; /* Max width to ensure it doesn't exceed this value */
+  height: 82px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dbtn1 {
+  margin-right: 10px;
+}
+
+.dbtn:hover {
+  background-color: red;
+  color: white;
+  border: 2px solid white;
+}
+
+.dbtn1:hover {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+}
+
+.experience {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.experience div {
+  text-align: center;
+}
+
+.about, .skills {
+  margin-bottom: 20px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list span {
+  background-color: #555;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .dpic {
+    width: 80px;
+    height: 80px;
   }
-  
+
+  .dbtn, .dbtn1 {
+    width: 200px;
+    height: 72px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .dpic {
+    width: 70px;
+    height: 70px;
+  }
+
+  .dbtn, .dbtn1 {
+    width: 180px;
+    height: 62px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-text {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
   .experience {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333;
-    padding: 20px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .experience div {
-    text-align: center;
+
+  .dbtn, .dbtn1 {
+    width: 160px;
+    height: 52px;
+    font-size: 14px;
   }
-  
-  .about, .skills {
-    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+  .dpic {
+    width: 60px;
+    height: 60px;
   }
-  
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+
+  .dbtn, .dbtn1 {
+    width: 140px;
+    height: 42px;
+    font-size: 12px;
   }
-  
-  .skills-list span {
-    background-color: #555;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
+}

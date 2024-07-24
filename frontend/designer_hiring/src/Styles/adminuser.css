@@ -1,55 +1,108 @@
 .aucad1 {
-    width: 1350px;
-    height: 136px;
+    width: 100%;
+    max-width: 1350px;
+    height: auto; /* Allow height to adjust based on content */
     background-color: white;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin: 20px auto;
     border: 2px black solid;
-    margin-bottom: 20px;
     display: flex;
-    align-items: center; /* Vertically center items */
-}
-
-.admuh1 {
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap; /* Allow wrapping of flex items */
+  }
+  
+  .admuh1 {
     text-align: center;
     font-size: 80px;
     font-weight: bold;
-    flex: 1 100%; /* Make it take the full width */
-}
-
-.admupic {
-    margin-top: 17px;
-    margin-left: 20px;
-    flex: 0;
-}
-
-.admuh3 {
-    margin-top: 50px;
-    margin-left: 20px;
+    width: 100%;
+  }
+  
+  .admupic {
+    width: 100px;
+    height: 100px;
+    margin: 0 20px;
+    flex: 0 0 auto; /* Prevent from growing or shrinking */
+  }
+  
+  .admuh3 {
+    flex: 1 1 auto; /* Allow to grow and shrink */
+    margin: 10px 20px;
+    font-size: 24px;
     font-weight: bold;
-    flex: 0 1 auto;
-}
-
-.admuh4 {
-    margin-top: 52px;
-    margin-left: 60px;
-}
-
-.admudlt {
-    width: 220px; /* Set a fixed width */
+  }
+  
+  .admuh4 {
+    flex: 1 1 auto; /* Allow to grow and shrink */
+    margin: 10px 20px;
+  }
+  
+  .admudlt {
+    width: 220px;
     height: 60px;
     background-color: white;
     color: black;
     border: 2px solid black;
-    margin-top: 0; /* Remove margin to avoid spacing issues */
-    margin-left: 20px; /* Adjust as needed */
+    margin: 10px 20px;
     font-weight: bold;
-    flex: 0 0 auto; /* Prevent the button from growing or shrinking */
-}
-
-
-.admudlt:hover {
+    flex: 0 0 auto;
+  }
+  
+  .admudlt:hover {
     background-color: red;
     color: white;
     border: black solid 2px;
-}
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .aucad1 {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .admuh3, .admuh4 {
+      width: 100%;
+      margin: 5px 0;
+    }
+  
+    .admupic {
+      margin: 10px auto;
+    }
+  
+    .admudlt {
+      width: 80%;
+      margin: 10px auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .admuh1 {
+      font-size: 60px;
+    }
+  
+    .admuh3, .admuh4 {
+      font-size: 18px;
+    }
+  
+    .admudlt {
+      width: 100%;
+      height: 50px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admuh1 {
+      font-size: 40px;
+    }
+  
+    .admuh3, .admuh4 {
+      font-size: 16px;
+    }
+  
+    .admudlt {
+      width: 100%;
+      height: 40px;
+    }
+  }
+  

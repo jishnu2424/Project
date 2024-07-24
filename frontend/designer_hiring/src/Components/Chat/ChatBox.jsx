@@ -39,7 +39,7 @@ const ChatBox = () => {
         const response = await ApiRequest.post(`/message/${id}`, { text: input });
         setMessages([...messages, response.data]);
         setInput('');
-        toast.success('Message Send');
+        toast.success('Message Sent');
 
       } catch (error) {
         console.error(error);
@@ -58,32 +58,28 @@ const ChatBox = () => {
   };
 
   return (
-    // <div className="chatbox-container">
-    //   <div className="chatbox-messages">
-    //     {messages && messages.map((msg, index) => (
-    //       <div key={index} className="chatbox-message">
-    //         {msg.text}
-    //       </div>
-    //     ))}
-    //   </div>
     <>
-    <h1 className='contacth1'> Contact Designer </h1>
-    <div style={{marginBottom:"50px"}}>
-      <div className="chatbox-input">
-        <input
-          type="text"
-          value={input}
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
-          placeholder="Type a message..."
-        />
-        <button onClick={handleSendMessage}><IoSend />
-        </button>
+      <h1 className="contacth1">Contact Designer</h1>
+      <div className="chatbox-container">
+        <div className="chatbox-messages">
+          {messages && messages.map((msg, index) => (
+            <div key={index} className="chatbox-message">
+              {msg.text}
+            </div>
+          ))}
+        </div>
+        <div className="chatbox-input">
+          <input
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
+            placeholder="Type a message..."
+          />
+          <button onClick={handleSendMessage}><IoSend /></button>
+        </div>
       </div>
-      </div>
-      </>
-
-    // </div>
+    </>
   );
 };
 

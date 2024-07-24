@@ -37,12 +37,13 @@ function AdminCard() {
   return (
     <>
       <div style={{width:"100%",height:"auto",fontFamily:"neue machina"}}>
-        {/* <h1 className='admh1'>Designers</h1> */}
         {Viewdesigner.map((item, index) => (
           <div className='acad1' key={index}>
-            <img src={item.photo} alt="" width={'100px'} height={"100px"} className='admpic'/>
+            <img src={item.photo} alt="" className='admpic'/>
             <h3 className='admh3'>{item.username}</h3>
-            <Link to={`/admin/admincadview/${item._id}`}><Button className='admview'>View Designer</Button></Link>
+            <Link to={`/admin/admincadview/${item._id}`}>
+              <Button className='admview'>View Designer</Button>
+            </Link>
             <Button className='admdlt' onClick={() => deleteData(item._id)}>Delete</Button>
           </div>
         ))}

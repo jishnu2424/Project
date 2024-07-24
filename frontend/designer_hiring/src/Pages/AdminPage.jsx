@@ -35,7 +35,6 @@ function AdminPage() {
       defaultActiveKey="profile"
       id="justify-tab-example"
       className="mb-3"
-      justify
       style={{fontWeight:"bold"}}
       >
         <Tab eventKey="home" title="Users">
