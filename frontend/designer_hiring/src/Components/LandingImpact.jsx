@@ -16,7 +16,7 @@ function LandingImpact() {
           <button className="icon"><TbTargetArrow /> Impactful Results</button>
         </div>
       </div>
-      <img src={p1} style={{ marginLeft: "150px" }} className='imgs' alt="" />
+      <img src={p1} className='imgs' alt="" />
     </>
   )
 }

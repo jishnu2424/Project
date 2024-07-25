@@ -15,8 +15,8 @@
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
-    margin-left: auto; /* Push the button to the far right */
-    margin-right: 10px; /* Ensure some margin on the right */
+    margin-left: auto; 
+    margin-right: 10px; 
   }
   
   .adminlogout:hover {
@@ -25,7 +25,6 @@
     border: none;
   }
   
-  /* Responsive Styles */
   @media (max-width: 1024px) {
  
   
@@ -33,7 +32,7 @@
       width: 200px;
       height: 55px;
       font-size: 18px;
-      margin-left: auto; /* Keep it aligned to the right */
+      margin-left: auto; 
       margin-right: 10px;
     }
   }

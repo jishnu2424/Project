@@ -1,10 +1,10 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Aligns items to the start and end of the container */
-    align-items: center; /* Aligns items vertically */
+    justify-content: space-between; 
+    align-items: center; 
     margin-top: 50px;
-    padding: 0 20px; /* Add padding for smaller screens */
+    padding: 0 20px; 
 }
 
 .li1 {
@@ -14,19 +14,21 @@
     margin-top: 50px;
     margin-left: 40px;
     flex: 1;
+    min-width: 250px; 
 }
 
 .icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust as needed */
-    justify-content: flex-end; /* Aligns items to the right */
+    gap: 20px; 
+    justify-content: flex-end; 
     margin-top: 20px;
     flex: 1;
+    min-width: 250px; 
 }
 
 .icon {
-    font-size: 24px; /* Adjust icon size */
+    font-size: 24px; 
     border-radius: 50px;
     background-color: white;
     color: black;
@@ -41,13 +43,12 @@
     color: white;
 }
 
-imgs {
+.imgs {
     margin-left: 150px;
     max-width: 100%;
     height: auto;
 }
 
-/* Responsive Styles */
 @media (max-width: 1024px) {
     .container {
         flex-direction: column;
@@ -81,7 +82,8 @@ imgs {
         margin-left: 0;
         margin-top: 20px;
         max-width: 90%;
-        margin-left: 50px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

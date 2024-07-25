@@ -18,7 +18,7 @@ function LandingDesigner() {
 
       setViewdesigner(designer);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      // console.error("Error fetching data:", error);
     }
   };
 

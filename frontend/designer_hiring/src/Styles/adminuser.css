@@ -1,14 +1,14 @@
 .aucad1 {
     width: 100%;
     max-width: 1350px;
-    height: auto; /* Allow height to adjust based on content */
+    height: auto; 
     background-color: white;
     margin: 20px auto;
     border: 2px black solid;
     display: flex;
     align-items: center;
     padding: 10px;
-    flex-wrap: wrap; /* Allow wrapping of flex items */
+    flex-wrap: wrap; 
   }
   
   .admuh1 {
@@ -22,18 +22,18 @@
     width: 100px;
     height: 100px;
     margin: 0 20px;
-    flex: 0 0 auto; /* Prevent from growing or shrinking */
+    flex: 0 0 auto; 
   }
   
   .admuh3 {
-    flex: 1 1 auto; /* Allow to grow and shrink */
+    flex: 1 1 auto; 
     margin: 10px 20px;
     font-size: 24px;
     font-weight: bold;
   }
   
   .admuh4 {
-    flex: 1 1 auto; /* Allow to grow and shrink */
+    flex: 1 1 auto; 
     margin: 10px 20px;
   }
   

@@ -13,11 +13,11 @@ export const SocketContextProvider = ({ children }) => {
     setSocket(newSocket);
 
     newSocket.on('connect', () => {
-      console.log('Connected to socket server:', newSocket.id);
+      // console.log('Connected to socket server:', newSocket.id);
     });
 
     newSocket.on('disconnect', () => {
-      console.log('Disconnected from socket server');
+      // console.log('Disconnected from socket server');
     });
 
     return () => {
@@ -27,8 +27,8 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser && socket) {
-      console.log('Emitting newUser event with currentUser._id:', currentUser._id);
-      socket.emit("newUser", currentUser._id);
+      // console.log('Emitting newUser event with currentUser._id:', currentUser._id);
+      // socket.emit("newUser", currentUser._id);
     }
   }, [currentUser, socket]);
 

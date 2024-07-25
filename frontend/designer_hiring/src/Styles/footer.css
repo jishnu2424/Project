@@ -28,12 +28,12 @@
   background-color: #1A1A1A;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure there is space between text and image */
+  justify-content: space-between;
   padding: 20px;
 }
 
 .text {
-  flex: 1; /* Take up remaining space */
+  flex: 1; 
 }
 
 .h1 {
@@ -44,7 +44,7 @@
 }
 
 .image {
-  flex: 0 0 auto; /* Prevent the image from growing or shrinking */
+  flex: 0 0 auto; 
 }
 
 .footimg {

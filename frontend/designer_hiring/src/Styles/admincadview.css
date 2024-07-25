@@ -1,14 +1,14 @@
 .profile-card {
-  width: 100%; /* Use 100% width to adapt to the screen size */
-  max-width: 1450px; /* Maximum width to ensure it doesn't exceed this value */
+  width: 100%; 
+  max-width: 1450px;
   border-radius: 10px;
-  margin: 50px auto; /* Center the card with auto margins */
+  margin: 50px auto; 
   background-color: black;
   color: white;
   padding: 20px;
   font-family: "neue machina";
-  height: auto; /* Allow height to adjust based on content */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  height: auto; 
+  box-sizing: border-box; 
 }
 
 .header {
@@ -46,8 +46,8 @@
 .dbtn, .dbtn1 {
   background-color: white;
   color: black;
-  width: 100%; /* Full width on smaller screens */
-  max-width: 250px; /* Max width to ensure it doesn't exceed this value */
+  width: 100%; 
+  max-width: 250px; 
   height: 82px;
   border: none;
   font-size: 20px;

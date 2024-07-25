@@ -15,7 +15,7 @@
   }
   
   .imglh {
-    flex: 0 0 auto; /* Prevent the image from growing or shrinking */
+    flex: 0 0 auto; 
     margin-right: 100px;
     margin-top: 50px;
   }

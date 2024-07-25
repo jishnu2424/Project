@@ -35,7 +35,6 @@
   opacity: 1;
 }
 
-/* Responsive Styles */
 @media (max-width: 1024px) {
   .Lcard {
     margin-top: 80px;
