@@ -49,8 +49,6 @@ function DesignerDesignMain() {
           <img
             src={item.design}
             alt={item.designName}
-            width={"800px"}
-            height={"500px"}
             className="dddimg"
           />
           <h2 className="ddh11">Design Name :{item.designName}</h2>
