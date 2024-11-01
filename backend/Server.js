@@ -29,6 +29,6 @@ app.use('/chat',chatRoutes)
 app.use('/message',messageRoutes)
 app.use('/hire',hireRoute)
 
-app.listen(process.env.PORT,()=>{
-    console.log("server running");
+app.listen(process.env.PORT ||5000,()=>{
+    console.log("server running in 5000");
 })
