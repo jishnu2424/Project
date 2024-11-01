@@ -46,7 +46,7 @@ const Schema = new mongoose.Schema({
     designs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'designs'
-    }],
+        }],
 });
 
 const UserDB = mongoose.model('User', Schema);

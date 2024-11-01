@@ -12,7 +12,7 @@ const verifyToken = async (req, res, next) => {
 
         const parts = authHeader.split(' ');
         if (parts.length !== 2 || parts[0] !== 'Bearer') {
-            return res.status(401).json({ message: "Invalid authorization header format" });
+            return res.status(401).json({ message:"Invalid authorization header format" });
         }
 
         const token = parts[1];
@@ -29,7 +29,7 @@ const verifyToken = async (req, res, next) => {
         req.userRole = decoded.sub.role;
         req.userName = decoded.sub.name;
         req.userEmail = decoded.sub.email;
-
+        
         next();
     } catch (error) {
         console.error("Token verification error:", error);

@@ -6,7 +6,7 @@ require('dotenv').config()
 
 const addDesign =async(req,res)=>{
     const tokenUserId = req.userId;
-
+    
     try{
         const body = req.body
         if (req.userRole === 'designer'){
@@ -124,7 +124,7 @@ const deleteDesign = async (req, res) => {
 
 
 const viewFavorites = async (req, res) => {
-    const userId = req.userId; // Ensure this is retrieved correctly, e.g., from a JWT token
+    const userId = req.userId; 
   
     try {
       const response = await designDb.find({ favorites: userId });
@@ -147,7 +147,6 @@ const viewFavorites = async (req, res) => {
         );
     
         if (alreadyRated) {
-            // Update existing rating
             const updateRating = await DesignDB.updateOne(
                 { _id: postId, "ratings.postedBy": _id },
                 { $set: { "ratings.$.star": star } },
@@ -182,7 +181,7 @@ const viewFavorites = async (req, res) => {
     )
     res.json(finalProduct)
     } catch (error) {
-        throw new Error (error)
+        throw new Error(error)
     }
     }
     

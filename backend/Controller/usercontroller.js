@@ -20,15 +20,12 @@ const viewUser = async (req,res)=>{
 const viewuserId = async (req, res) => {
     const { id } = req.params;
     try {
-        // Find the user by ID
         const user = await userDB.findById(id);
         
-        // Check if the user was found
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Send the user data in the response
         return res.status(200).json(user);
     } catch (err) {
         console.error(err);

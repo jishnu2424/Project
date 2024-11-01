@@ -12,6 +12,8 @@ const hireRoute = require('./Routes/hireRoute.js')
 const bodyParser = require('body-parser')
 const cors =require('cors')
 const app = express()
+require('dotenv').config()
+
 
 app.use(cors())
 app.use(express.json())
@@ -27,6 +29,6 @@ app.use('/chat',chatRoutes)
 app.use('/message',messageRoutes)
 app.use('/hire',hireRoute)
 
-app.listen(5000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("server running");
 })

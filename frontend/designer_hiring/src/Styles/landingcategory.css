@@ -105,12 +105,48 @@
     .cath1 {
         font-size: 2rem;
     }
+
     .catb {
         width: 100%;
         margin: 5px 0;
+        font-size: 0.9rem;
+        height: 45px;
     }
+
     .catcad {
         width: 100%;
         padding: 10px;
+    }
+    
+    .catcard {
+        margin-bottom: 30px;
+    }
+
+    .pagination-container {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cath1 {
+        font-size: 1.75rem;
+        padding-top: 10px;
+    }
+
+    .catb {
+        font-size: 0.85rem;
+        height: 40px;
+    }
+
+    .catcad {
+        padding: 5px;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+
+    .pagination-container {
+        margin-top: 5px;
     }
 }
